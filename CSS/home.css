@@ -1,0 +1,52 @@
+/* =========================================
+   HOME PAGE STYLES (index.html)
+   ========================================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #eef1ff 100%);
+}
+
+.hero-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.hero-text h1 {
+    font-family: 'Playfair', serif;
+    font-size: 4rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.hero-text .highlight {
+    color: var(--primary);
+}
+
+.hero-text p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--gray);
+    max-width: 500px;
+}
+
+.hero-image {
+    text-align: center;
+}
+
+.hero-image img {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 8px solid white;
+    box-shadow: var(--shadow-md);
+    margin: 0 auto;
+}
+

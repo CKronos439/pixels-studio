@@ -8,18 +8,21 @@
         <!-- Font Awesome for Icons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
           integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="CSS/home.css">
+        <link rel="stylesheet" href="CSS/global.css">
     </head>
     <body>
         <header>
             <div class="container">
                 <nav>
-                    <div class="logo">PIXELS STUDIO</div>
+                    <a href="index.html" class="logo">
+                    <img src="Assets/pixels studio.png" alt="Pixels Studio">
+                </a>
                     <ul class="nav-links">
-                        <li><a href="#home">HOME</a></li>
-                        <li><a href="#about">ABOUT</a></li>
-                        <li><a href="#services">SERVICES</a></li>
-                        <li><a href="#contact">CONTACT <i class="fas fa-paper-plane "></i></i></a></li>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="services.html">SERVICES</a></li>
+                        <li><a href="#" >CONTACT <i class="fas fa-paper-plane "></i></a></li>
                     </ul>
                     <div class="mobile-toggle">
                         <i class="fas fa-bars"></i>
@@ -34,14 +37,56 @@
                 <div class="hero-content">
                     <div class="hero-text fade-in">
                         <h1>Hi! We are <span class="highlight">Pixels Studio</span></h1>
-                        <p>We look forward to working with you at the upcoming photo shoot or event. We want to capture beautiful images that will provide you with precious memories for years to come.</p>
+                        <p>We look forward to working with you at the upcoming photo shoot or event. 
+                            We want to capture beautiful images 
+                            that will provide you with precious memories for years to come.</p>
                         <div>
-                            <a href="#services" class="btn btn-primary">View Past Projects</a>
+                            <a href="#services" class="btn btn-primary">View Projects</a>
                             <a href="#contact" class="btn btn-outline">Get In Touch</a>
                         </div>
                     </div> 
                     <div class="hero-image fade-in">
                         <img src="Assets/iimage2.jpg" alt="Pixels Studio">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <footer>
+            <div class="row">
+                <div class="column">
+                    <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo">
+                    <p>Capturing moments that matter. 
+                        We turn fleeting seconds into lasting memories with a focus on natural light and genuine emotion. 
+                        For inquiries regarding rates, availability, or to book a session, please use the contact form</p>
+                </div>
+                <div class="column">
+                    <h3>Office <div class="underline"><span></span></div></h3>
+                    <p>ITPL Road</p>
+                    <p>Ankwa Dobro, Nsawam</p>
+                    <p>Eastern Region, Ghana</p>
+                    <p class="email-id">felixdanso44@gmail.com</p>
+                    <a href="tel:+233244123456">
+                        <h4>+233 24 412 3456</h4>
+                    </a>
+                </div>
+                <div class="column">
+                    <h3>Links <div class="underline"><span></span></div></h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="#">Contact </a></li>
+                </ul>
+                </div>
+                <div class="column">
+                    <h3>Studio Hours <div class="underline"><span></span></div></h3>
+                    <div class="underline"><span></span></div>
+                        <p class="email-id">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                        <p class="email-id">Saturday: 10:00 AM - 4:00 PM</p>
+                        <p class="email-id">Sunday: Closed</p>
+
                         <div class="social-links">
                             <a href="#" target="_blank" aria-label="whatsapp"><i class="fab fa-whatsapp"></i></a>
                             <a href="#" target="_blank" aria-label="facebook"><i class="fab fa-facebook"></i></a>
@@ -51,62 +96,10 @@
                     </div>
                 </div>
             </div>
-        </section>
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title fade-in">About Us</h2>
-                <div class="about-content">
-                <div class="about-text fade-in">
-                    <h3>Turning Moments Into Timeless Memories<hr></h3>
-                    <p>We are pixels studio and we want to capture beautiful images that will provide you with precious memories for years to come.</p>
-                    <p>With a keen eye for detail and a passion for storytelling, we specialize in creating stunning visuals that truly reflect your unique personality and style. Whether it's a wedding, portrait session, or special event, we are dedicated to delivering exceptional results that exceed your expectations.</p>
-                    <p>Let us help you preserve your most cherished moments through the art of photography. Contact us today to schedule your session and let's create something beautiful together!</p>
-                </div>
-                <div class="fade-in">
-                    <img src="Assets/image1.jpg" alt="Working on code" style="box-shadow: var(--shadow-lg); border-radius: 40px;">
-                </div>
-                </div>
-                
-
-            </div>
-        </section>
-        <section id="services" class="services">
-            <div class="container">
-                <h2 class="section-title fade-in">Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <img src="Assets/kids.png" alt="Kids Photoshoot">
-                        <a href="Services/kids.html" class="arrow-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>    
-                        </a>
-                        <h3>Kids Photoshoot</h3>
-                    </div>
-                    <div class="service-card">
-                        <img src="Assets/photoshoot.png" alt="Photoshoot">
-                        <a href="Services/photoshoot.html" class="arrow-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>    
-                        </a>
-                        <h3>Professional Photoshoot</h3>
-                    </div>
-                    <div class="service-card">
-                        <img src="Assets/wedding.png" alt="Weddings">
-                        <a href="Services/weddings.html" class="arrow-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>    
-                        </a>
-                        <h3>Weddings</h3>
-                    </div>
-                </div> 
-            </div>
-        </section>
-        
-        <section id="contact" class="contact"></section>
-        <footer></footer>
+            <hr>
+            <p class="copyright">Pixels Studio 2025 - All Rights Reserved</p>
+        </footer>
     
+        <link rel="script" href="main.js">
     </body>
 </html>
