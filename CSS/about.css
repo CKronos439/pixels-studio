@@ -1,3 +1,10 @@
+/* ==========================================================================
+   ABOUT PAGE STYLES
+   Applies to: about.html
+   ========================================================================== */
+
+/* --- Hero Section (Fixed Background) --- */
+/* The background stays fixed while content scrolls over it */
 .about-hero {
     position: fixed;
     top: 0;
@@ -5,6 +12,7 @@
     width: 100%;
     height: 80vh;
     z-index: 1;
+    /* BACKGROUND IMAGE: Update the path below */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -16,25 +24,29 @@
     box-shadow: var(--shadow-xlg);
 }
 
+/* Hero Typography */
 .hero-overlay h1 {
+    font-family: 'Playfair Display', serif; /* Header Font */
     color: white;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 3.5rem;
     margin-bottom: 10px;
     font-weight: 800;
 }
 
 .hero-overlay p {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Body/Accent Font */
     color: #f8f9fa;
     font-size: 1.5rem;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
+/* --- Content Wrapper (Scrolls over Hero) --- */
+/* This white section slides up over the fixed hero image */
 .about-intro {
     position: relative;
     z-index: 10;
-    margin-top: calc(80vh - 100px);
+    margin-top: calc(80vh - 100px); /* Creates the overlap effect */
     background: white;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
@@ -43,7 +55,7 @@
     box-shadow: var(--shadow-lg);
 }
 
-
+/* --- 2-Column Grid Layout --- */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -51,14 +63,16 @@
     align-items: center;
 }
 
+/* Text Column Styles */
 .about-text h2 {
-    font-family: 'Playfair', serif;
+    font-family: 'Playfair Display', serif; /* Header Font */
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: var(--dark);
 }
 
 .highlight-text {
+    font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
     color: var(--primary);
     font-weight: 600;
@@ -66,10 +80,12 @@
 }
 
 .about-text p {
+    font-family: 'Montserrat', sans-serif;
     margin-bottom: 20px;
     color: var(--gray);
 }
 
+/* Image Column Styles */
 .about-image img {
     width: 100%;
     border-radius: 30px;
