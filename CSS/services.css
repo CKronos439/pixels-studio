@@ -1,9 +1,8 @@
-/* ==========================================================================
+/* =========================================
    SERVICES PAGE STYLES
-   Applies to: services.html
-   ========================================================================== */
+   ========================================= */
 
-/* --- Header Section --- */
+/* --- 1. HEADER SECTION --- */
 .services-header {
     padding-top: 150px;
     padding-bottom: 50px;
@@ -13,16 +12,23 @@
 
 .subtitle {
     color: var(--gray);
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto;
+    font-weight: 700;
 }
 
-/* --- Services List Layout --- */
+.line {
+    margin-top: 0;
+    width: 25rem;
+}
+
+/* --- 2. SERVICE LIST CONTAINER --- */
 .service-list {
     padding-bottom: 100px;
 }
 
+/* --- 3. INDIVIDUAL SERVICE ROWS --- */
 .service-row {
     display: flex;
     align-items: center;
@@ -34,7 +40,6 @@
     flex-direction: row-reverse;
 }
 
-/* --- Image Styling --- */
 .service-image {
     flex: 1;
 }
@@ -53,12 +58,13 @@
     box-shadow: var(--shadow-md);
 }
 
-/* --- Text Content Styling --- */
+/* --- 4. CONTENT & FEATURES --- */
 .service-content {
     flex: 1;
 }
 
 .service-content h2 {
+    font-family: 'Playfair Display', serif; /* Service Title Font */
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: var(--dark);
@@ -70,7 +76,6 @@
     font-size: 1.1rem;
 }
 
-/* Features List */
 .service-features {
     list-style: none;
     margin-bottom: 40px;

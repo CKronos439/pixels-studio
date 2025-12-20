@@ -1,30 +1,73 @@
-/* ==========================================================================
-   WEDDINGS PAGE STYLES
-   Applies to: weddings.html (Template for Kids/Photoshoot)
-   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+:root{
+    --primary: #990012;
+    --primary-dark:#660033;
+    --dark: #121212;
+    --light: #f8f9fa;
+    --gray:#6c757d;
+    --light-gray:#e9ecef;
+    --borber-radius: 12px;
+    --transition: all 0.3s ease;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-md: 0 8px 25px rgba(0,0,0,0.12);
+    --shadow-lg: 0 40px 60px rgba(0,0,0,0.15);
+    --shadow-xlg: inset 0 0 0 1000px rgba(0,0,0,0.3);
+}
 
-/* --- Fixed Background (Parallax Effect) --- */
+body{
+    font-family: 'Inter', sans-serif;
+    background-color: var(--light) ;
+    color: var(--dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+    transform: var(--transition);
+}
+
+/* =========================================
+    WEDDINGS PAGE  (Fixed/Parallax Effect)
+   ========================================= */
+
+/* 1. HERO SECTION (Fixed to the back) */
 .weddings-hero {
+    /* FIXES the image to the screen so it doesn't move */
     position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    height: 80vh; 
-    z-index: 1;  
+    height: 80vh; /* Takes up 80% of the screen height */
+    z-index: 1;  /* Z-Index 1: Sits at the very bottom */
+    
+    /* Image path relative to styles.css */
     background: url('../Assets/wedding.png') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    /* Dark overlay */
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.3);
 }
 
-/* --- Hero Content --- */
+/* 2. HERO CONTENT (Title & Button) */
 .hero-overlay {
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center; /* Centers button horizontally */
 }
 
 .hero-overlay h1 {
@@ -32,18 +75,20 @@
     font-size: 3rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     margin-bottom: 50px; 
     text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
-/* Booking Button */
+/* Custom Booking Button */
 .btn-book-session {
+    font-family: 'Inter' serif;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 15px 35px;
-    background-color: var(--primary);
+    background: linear-gradient(to right, #8a0a1b, #f5a801);
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -59,12 +104,15 @@
     transform: translateY(-3px);
 }
 
-/* Back Navigation Button */
+/* 3. BACK BUTTON (Inside Fixed Hero) */
 .floating-back-btn {
     position: absolute; 
     top: 30px;
     left: 30px;
+    
+    /* Z-Index 2: Above the background image, but BELOW the white scrolling section */
     z-index: 2; 
+    
     background-color: rgba(0, 0, 0, 0.5);
     width: 45px;
     height: 45px;
@@ -81,28 +129,36 @@
     transform: scale(1.1);
 }
 
-/* --- Scrolling Content Container --- */
+/* 4. THE SCROLLING CONTENT (The Curtain) */
 .weddings-intro {
     position: relative;
+    /* Z-Index 10: Ensures this slides OVER the hero */
     z-index: 10; 
+    
+    /* Pushes this section down so it starts near the bottom of the hero */
+    /* 80vh (Hero Height) - 100px (Overlap Amount) */
     margin-top: calc(80vh - 100px); 
+    
+    /* Visual Styling */
     background: linear-gradient(to bottom, #ffffff 0%, #fff5f8 100%);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
+    
+    /* Increased Spacing (Top Padding) */
     padding: 120px 20px 80px 20px;
+    
     text-align: center;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensures you have enough space to scroll */
+    background-color: white; /* Solid background covers the image */
     box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
 }
 
-/* Content Text */
+/* Intro Text Styling */
 .intro-welcome {
-    font-size: 1rem;
+    font-size: 1.4rem;
+    font-weight: 700;
     color: var(--gray);
     margin-bottom: 15px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
 }
 
 .intro-text {
@@ -114,27 +170,29 @@
     font-weight: 300;
 }
 
+/* "See More" Button */
 .see-more-btn {
     display: inline-block;
-    width: fit-content; 
+    width: fit-content; /* Fits text exactly */
     padding: 10px 40px;
-    border: 1px solid #990000;
-    color: #990000;
+    border: 1px solid var(--primary); /* Dark Red border */
+    color: var(--primary);
     text-decoration: none;
     border-radius: 50px;
     font-size: 0.9rem;
-    margin-bottom: 60px;
+    margin-bottom: 60px; /* Space before Projects title */
     transition: var(--transition);
 }
 
 .see-more-btn:hover {
-    background-color: #990000;
+    background-color: var(--primary);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-6px);
     color: white;
 }
 
-/* --- Gallery Grid --- */
 .projects-title {
-    font-size: 0.85rem;
+    font-size: 1rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--gray);
@@ -143,6 +201,7 @@
     opacity: 0.8;
 }
 
+/* Gallery Grid */
 .gallery-grid {
     display: flex;
     justify-content: center;

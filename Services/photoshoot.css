@@ -1,3 +1,8 @@
+/* =========================================
+   PROFESSIONAL PHOTOSHOOT PAGE  
+   ========================================= */
+
+/* --- 1. RESET & VARIABLES --- */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -19,6 +24,7 @@
 }
 
 body{
+    /* Main Body: Changed to Proza Libre */
     font-family: 'Inter', sans-serif;
     background-color: var(--light) ;
     color: var(--dark);
@@ -38,11 +44,7 @@ a{
     transform: var(--transition);
 }
 
-/* =========================================
-   PROFESSIONAL PHOTOSHOOT PAGE  
-   ========================================= */
-
-/* 1. HERO SECTION (Fixed to the back) */
+/* --- 2. HERO SECTION (Fixed Background) --- */
 .photoshoot-hero {
     /* FIXES the image to the screen so it doesn't move */
     position: fixed; 
@@ -62,7 +64,7 @@ a{
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.3);
 }
 
-/* 2. HERO CONTENT (Title & Button) */
+/* --- 3. HERO CONTENT (Title & Button) --- */
 .hero-overlay {
     width: 100%;
     display: flex;
@@ -76,19 +78,20 @@ a{
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, serif;
     margin-bottom: 50px; 
     text-shadow: 0 4px 15px rgba(0,0,0,0.4);
 }
 
 /* Custom Booking Button */
 .btn-book-session {
-    font-family: 'Inter' serif;
+    /* Button Font: Changed to Proza Libre */
+    font-family: 'Inter', sans-serif;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: 15px 35px;
-    background-color: var(--primary);
+    background: linear-gradient(to right, #8a0a1b, #f5a801);;
     color: white;
     text-decoration: none;
     border-radius: 50px;
@@ -100,11 +103,10 @@ a{
 }
 
 .btn-book-session:hover {
-    background-color: var(--primary-dark);
     transform: translateY(-3px);
 }
 
-/* 3. BACK BUTTON (Inside Fixed Hero) */
+/* --- 4. FLOATING BACK BUTTON --- */
 .floating-back-btn {
     position: absolute; 
     top: 30px;
@@ -129,7 +131,7 @@ a{
     transform: scale(1.1);
 }
 
-/* 4. THE SCROLLING CONTENT (The Curtain) */
+/* --- 5. SCROLLING CONTENT (The Curtain) --- */
 .photoshoot-intro {
     position: relative;
     /* Z-Index 10: Ensures this slides OVER the hero */
@@ -155,9 +157,10 @@ a{
 
 /* Intro Text Styling */
 .intro-welcome {
-    font-size: 1rem;
+    font-size: 1.4rem;
     color: var(--gray);
     margin-bottom: 15px;
+    font-weight: 700;
 }
 
 .intro-text {
@@ -174,8 +177,8 @@ a{
     display: inline-block;
     width: fit-content; /* Fits text exactly */
     padding: 10px 40px;
-    border: 1px solid #990000; /* Dark Red border */
-    color: #990000;
+    border: 1px solid var(--primary); /* Dark Red border */
+    color: var(--primary);
     text-decoration: none;
     border-radius: 50px;
     font-size: 0.9rem;
@@ -184,12 +187,13 @@ a{
 }
 
 .see-more-btn:hover {
-    background-color: #990000;
+    background-color: var(--primary);
     color: white;
+    transform: translateY(-6px);
 }
 
 .projects-title {
-    font-size: 0.85rem;
+    font-size: 1rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: var(--gray);
@@ -198,7 +202,7 @@ a{
     opacity: 0.8;
 }
 
-/* Gallery Grid */
+/* --- 6. GALLERY GRID --- */
 .gallery-grid {
     display: flex;
     justify-content: center;

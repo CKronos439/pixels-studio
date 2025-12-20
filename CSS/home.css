@@ -1,14 +1,13 @@
-/* ==========================================================================
-   HOME PAGE STYLES
-   Applies to: index.html
-   ========================================================================== */
+/* =========================================
+   HOME PAGE STYLES (index.html)
+   ========================================= */
 
-/* --- Hero Section (Split Layout) --- */
+/* --- 1. HERO SECTION (Top Fold) --- */
 .hero {
     min-height: 100vh;
     display: flex;
     align-items: center;
-    padding-top: 80px; /* Offset for fixed header */
+    padding-top: 80px;
     background: linear-gradient(135deg, #f8f9ff 0%, #eef1ff 100%);
 }
 
@@ -19,8 +18,9 @@
     align-items: center;
 }
 
-/* --- Hero Typography --- */
+/* --- 2. HERO TYPOGRAPHY --- */
 .hero-text h1 {
+    font-family: 'Playfair Display', serif; /* Hero Font */
     font-size: 4rem;
     line-height: 1.2;
     margin-bottom: 1rem;
@@ -38,7 +38,7 @@
     max-width: 500px;
 }
 
-/* --- Hero Image --- */
+/* --- 3. HERO IMAGE --- */
 .hero-image {
     text-align: center;
 }

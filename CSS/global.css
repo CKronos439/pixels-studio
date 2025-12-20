@@ -1,9 +1,16 @@
-/* ==========================================================================
-   GLOBAL STYLES
-   Applies to: All pages
-   ========================================================================== */
+/* =========================================
+   GLOBAL STYLES (Use on ALL pages)
+   ========================================= */
 
-/* --- CSS Variables & Color Palette --- */
+/* --- 1. RESET & VARIABLES --- */
+*, 
+*::before, 
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 :root {
     --primary: #8a0a1b;
     --primary-dark: #5C000E;
@@ -11,29 +18,20 @@
     --light: #ffffff;
     --gray: #6c757d;
     --light-gray: #e9ecef;
-    
     --borber-radius: 12px;
     --transition: all 0.3s ease;
-    
     --shadow-sm: 0 2px 8px rgba(0,0,0,0.08);
     --shadow-md: 0 8px 25px rgba(0,0,0,0.12);
     --shadow-lg: 0 40px 60px rgba(0,0,0,0.15);
     --shadow-xlg: inset 0 0 0 1000px rgba(0,0,0,0.3);
 }
 
-/* --- Reset & Base Styles --- */
-*, *::before, *::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* --- 2. BASE DOCUMENT STYLES --- */
 body {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    line-height: 1.7;
+    font-family: 'Inter', sans-serif; /* Body Font */
     background-color: var(--light);
     color: var(--dark);
+    line-height: 1.7;
     overflow-x: hidden;
 }
 
@@ -60,32 +58,7 @@ section {
     padding: 5rem 0;
 }
 
-/* --- Typography --- */
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    color: var(--dark);
-}
-
-.section-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-}
-
-.section-title::after {
-    content: '';
-    width: 80px;
-    height: 4px;
-    background-color: var(--primary);
-    display: block;
-    margin: 1rem auto 0;
-    border-radius: 2px;
-}
-
-/* --- Navigation Bar --- */
+/* --- 3. NAVIGATION BAR --- */
 header {
     background-color: rgba(255,255,255,0.95);
     backdrop-filter: blur(10px);
@@ -98,6 +71,7 @@ header {
 }
 
 nav {
+    font-family: 'Proza Libre', sans-serif;;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,10 +91,7 @@ nav {
 }
 
 .nav-links a {
-    font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 1px;
     color: var(--dark);
     position: relative;
     padding: 0.5rem 0;
@@ -148,18 +119,17 @@ nav {
     color: var(--dark);
 }
 
-/* --- Buttons --- */
+/* --- 4. BUTTONS --- */
 .btn {
     display: inline-block;
     padding: 0.9rem 2rem;
     border-radius: 50px;
-    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
+    transition: var(--transition);
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-size: 0.9rem;
     cursor: pointer;
-    transition: var(--transition);
 }
 
 .btn-primary {
@@ -186,26 +156,47 @@ nav {
     transform: translateY(-3px);
 }
 
-/* ==========================================================================
-   FOOTER STYLES
-   ========================================================================== */
+/* --- 5. TYPOGRAPHY (Section Headers) --- */
+.section-title {
+    font-family: 'Playfair Display', serif; /* Header Font */
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    position: relative;
+    color: var(--dark);
+}
 
+.section-title::after {
+    content: '';
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary);
+    display: block;
+    margin: 1rem auto 0;
+    border-radius: 2px;
+}
+
+/* --- 6. FOOTER SECTION --- */
 footer {
     width: 100%;
+    z-index: 20;
     position: relative;
     bottom: 0;
     background: linear-gradient(to right, #8a0a1b, #1a0205);
     color: #fff;
     padding: 50px 0 20px;
     border-top-left-radius: 50px;
-    
-    /* Footer Base Font (Montserrat) */
-    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
+    font-family: 'Inter', sans-serif; /* Footer Font */
     line-height: 20px;
 }
 
-/* Footer Grid Layout */
+footer a h4 {
+    color: #fff;      
+    margin-bottom: 0;
+    display: inline-block;
+}
+
 .row {
    width: 85%;
    margin: auto;
@@ -220,7 +211,6 @@ footer {
     padding: 10px;
 }
 
-/* Middle columns are smaller to save space */
 .column:nth-child(2), .column:nth-child(3) {
     flex-basis: 15%;
 }
@@ -230,33 +220,28 @@ footer {
     margin-bottom: 30px;
 }
 
-/* Footer Headings (Playfair Display) */
 .column h3 {
     width: fit-content;
     margin-bottom: 40px;
     position: relative;
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
-    letter-spacing: 0.5px;
+    font-family: 'Inter', serif; /* Footer Header Font */
 }
 
-/* Email & Contact Styles */
 .email-id {
     width: fit-content;
     border-bottom: 1px solid #ccc;
     margin: 20px 0;
-    font-weight: 500;
 }
 
 .phone-numbers a {
-    display: block;
+    display: block; 
     color: #fff;
     text-decoration: none;
-    font-weight: 600; /* Bold numbers for readability */
-    margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 5px; 
 }
 
-/* Footer Links List */
+
 ul li {
     list-style: none;
     margin-bottom: 12px;
@@ -265,14 +250,14 @@ ul li {
 ul li a {
     text-decoration: none;
     color: #fff;
-    transition: var(--transition);
+}
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    justify-content: center;
 }
 
-ul li a:hover {
-    opacity: 0.8;
-}
-
-/* Social Media Icons */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -300,18 +285,13 @@ ul li a:hover {
     box-shadow: var(--shadow-md);
 }
 
-/* Divider Line */
 hr {
     width: 90%;
     border: 0;
-    border-bottom: 1px solid #ccc; /* Subtle separation line */
+    border-bottom: 1px solid #ccc;
     margin: 20px auto;
-    opacity: 0.3;
 }
 
-/* Copyright Text */
 .copyright {
     text-align: center;
-    font-weight: 400;
-    letter-spacing: 0.5px;
 }

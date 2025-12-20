@@ -1,10 +1,8 @@
-/* ==========================================================================
+/* =========================================
    ABOUT PAGE STYLES
-   Applies to: about.html
-   ========================================================================== */
+   ========================================= */
 
-/* --- Hero Section (Fixed Background) --- */
-/* The background stays fixed while content scrolls over it */
+/* --- 1. HERO SECTION (Fixed Background) --- */
 .about-hero {
     position: fixed;
     top: 0;
@@ -12,7 +10,6 @@
     width: 100%;
     height: 80vh;
     z-index: 1;
-    /* BACKGROUND IMAGE: Update the path below */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -22,31 +19,30 @@
     justify-content: center;
     text-align: center;
     box-shadow: var(--shadow-xlg);
+    box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.4);
 }
 
-/* Hero Typography */
+/* --- 2. HERO OVERLAY CONTENT --- */
 .hero-overlay h1 {
-    font-family: 'Playfair Display', serif; /* Header Font */
     color: white;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Header Font */
     font-size: 3.5rem;
     margin-bottom: 10px;
     font-weight: 800;
 }
 
 .hero-overlay p {
-    font-family: 'Montserrat', sans-serif; /* Body/Accent Font */
+    font-family: 'Inter', sans-serif; /* Subtitle Font */
     color: #f8f9fa;
     font-size: 1.5rem;
-    font-weight: 600;
-    letter-spacing: 1px;
+    font-weight: 700;
 }
 
-/* --- Content Wrapper (Scrolls over Hero) --- */
-/* This white section slides up over the fixed hero image */
+/* --- 3. SCROLLING INTRO CONTENT --- */
 .about-intro {
     position: relative;
     z-index: 10;
-    margin-top: calc(80vh - 100px); /* Creates the overlap effect */
+    margin-top: calc(80vh - 100px);
     background: white;
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
@@ -55,7 +51,8 @@
     box-shadow: var(--shadow-lg);
 }
 
-/* --- 2-Column Grid Layout --- */
+
+/* --- 4. GRID LAYOUT (Text & Image) --- */
 .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -63,16 +60,14 @@
     align-items: center;
 }
 
-/* Text Column Styles */
 .about-text h2 {
-    font-family: 'Playfair Display', serif; /* Header Font */
+    font-family: Playfair Display sans-serif; /* Section Header Font */
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: var(--dark);
 }
 
 .highlight-text {
-    font-family: 'Montserrat', sans-serif;
     font-size: 1.2rem;
     color: var(--primary);
     font-weight: 600;
@@ -80,12 +75,10 @@
 }
 
 .about-text p {
-    font-family: 'Montserrat', sans-serif;
     margin-bottom: 20px;
     color: var(--gray);
 }
 
-/* Image Column Styles */
 .about-image img {
     width: 100%;
     border-radius: 30px;
