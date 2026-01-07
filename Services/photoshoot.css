@@ -55,7 +55,7 @@ a{
     z-index: 1;  /* Z-Index 1: Sits at the very bottom */
     
     /* Image path relative to styles.css */
-    background: url('../Assets/photoshoot.png') no-repeat center center/cover;
+    background: url('../Assets/photoshoot card.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;

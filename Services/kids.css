@@ -57,7 +57,7 @@ a{
     z-index: 1; 
     
     /* Image path relative to styles.css */
-    background: url('../Assets/kids.png') no-repeat center center/cover;
+    background: url('../Assets/kidz card.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
