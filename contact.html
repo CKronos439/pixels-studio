@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Pixels Studio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&family=Proza+Libre:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
+        integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/contact.css"> 
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <a href="index.html" class="logo">
+                    <img src="Assets/pixels studio.png" alt="Pixels Studio">
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">HOME</a></li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="services.html">SERVICES</a></li>
+                    <li><a href="contact.html" class="active">CONTACT <i class="fas fa-paper-plane"></i></a></li>
+                </ul>
+                <div class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="contact-hub" style="margin-top: 80px;">
+        <div class="container">
+            
+            <div class="section-title">
+                <h1>Contact Us</h1>
+            </div>
+
+            <div class="contact-grid">
+                
+                <div class="contact-info-card">
+                    <h2 class="card-title">Get in Touch</h2>
+                    <p class="contact-intro">
+                        Have a question before booking? Feel free to reach out directly. 
+                        We are happy to discuss your vision and create something timeless.
+                    </p>
+                    
+                    <div class="owner-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Studio Location</h4>
+                                <span>Ankwa Dobro<br>Nsawam, Eastern Region</span>
+                            </div>
+                        </div>
+
+                        <a href="javascript:void(0)" onclick="window.open('https://wa.me/233206661411', '_blank')" class="detail-item clickable">
+                            <i class="fab fa-whatsapp"></i>
+                            <div>
+                                <h4>WhatsApp</h4>
+                                <span>+233 20 666 1411</span>
+                            </div>
+                        </a>
+
+                        <a href="tel:+233549216815" class="detail-item clickable">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Call</h4>
+                                <span>+233 54 921 6815</span>
+                            </div>
+                        </a>
+
+                        <a href="mailto:pixelsstudio4@gmail.com" class="detail-item clickable">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email Us</h4>
+                                <span>pixelsstudio4@gmail.com</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="booking-cta-card">
+                    <h3>Ready to Create Magic?</h3>
+                    <p>
+                        If you already know what you want, let's get you on the calendar. 
+                        Fill out our simple 3-step form to secure your date.
+                    </p>
+                    
+                    <button class="btn btn-primary big-book-btn" onclick="openModal()">
+                        Book a Session Now <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="row">
+            <div class="column">
+                <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo">
+                <p>Capturing moments that matter. 
+                    We turn fleeting seconds into lasting memories with a focus on natural light and genuine emotion. 
+                    For inquiries regarding rates, availability, or to book a session, please use the contact form.</p>
+            </div>
+            <div class="column">
+                <h3 class="footer-head">Office</h3>
+                <p>Ankwa Dobro, Nsawam</p>
+                <p>Eastern Region, Ghana</p>
+                
+                <div class="phone-numbers">
+                    <a href="tel:+233549216815"><i class="fas fa-phone "></i> +233 54 921 6815</a>
+                    <a href="tel:+233206661411"><i class="fas fa-phone "></i> +233 20 666 1411</a>        
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="footer-head">Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3 class="footer-head">Studio Hours</h3>
+                <p class="footer-head">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                <p class="footer-head">Saturday: 10:00 AM - 4:00 PM</p>
+                <p class="footer-head">Sunday: Closed</p>
+
+                <div class="social-links">
+                    <a href="https://api.whatsapp.com/send?phone=233206661411" target="_blank" aria-label="whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" target="_blank" aria-label="facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="mailto:pixelsstudio4@gmail.com" aria-label="Send us an Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="#" target="_blank" aria-label="Intsagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">&copy; Pixels Studio 2025 - All Rights Reserved</p>
+    </footer>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-container">
+            
+            <div class="modal-header">
+                <h2>Book Pixels Studio</h2>
+                <div class="brand-line"></div>
+            </div>
+
+            <p class="modal-subtitle">Please enter your booking details</p>
+
+            <div class="progress-bar">
+                <div class="step active" id="stepIndicator1">
+                    <div class="step-circle">1</div>
+                    <span>Your details</span>
+                </div>
+                <div class="step-line"></div>
+                
+                <div class="step" id="stepIndicator2">
+                    <div class="step-circle">2</div>
+                    <span>Booking details</span>
+                </div>
+                <div class="step-line"></div>
+                
+                <div class="step" id="stepIndicator3">
+                    <div class="step-circle">3</div>
+                    <span>Terms & Conditions</span>
+                </div>
+            </div>
+
+            <form id="bookingForm" onsubmit="event.preventDefault();">
+                
+                <div class="form-step active" id="step1">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Smith" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+233 XX XXX XXXX" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step2">
+                    <div class="input-group">
+                        <label>Service</label>
+                        <select id="serviceSelect">
+                            <option value="photoshoot">Photoshoot</option>
+                            <option value="wedding">Wedding Coverage</option>
+                            <option value="kids">Kids Photography</option>
+                            <option value="event">Other Event</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Booking Date & Time</label>
+                        <div class="date-wrapper">
+                            <input type="datetime-local" placeholder="Select date and time" required>
+                            </div>
+                    </div>
+                    <div class="input-group">
+                        <label>Event Location</label>
+                        <input type="text" placeholder="Enter location" required>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step3">
+                    <div class="terms-scroll-box">
+                        <p>
+                            All photographic materials, such as original negatives, photos, or slides, shall be the exclusive property of the photographer. The photographer shall own the copyright in all images created and may use the work for samples, contests, exhibition, advertising and self-promotion. Usage outside the bounds of this agreement will require the client’s consent.
+                        </p>
+                        <br>
+                        <p>
+                            Booking deposit and payment: the client shall make a booking fee as per contract to retain the studio to perform the services specified in the contract.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="nav-btn back" id="prevBtn" onclick="changeStep(-1)" style="visibility: hidden;">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    
+                    <button type="button" class="nav-btn next" id="nextBtn" onclick="changeStep(1)">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="modal-footer-bar">
+                <button type="button" class="cancel-link" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

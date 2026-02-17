@@ -8,6 +8,7 @@
         <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="photoshoot.css">
+    <link rel="stylesheet" href="../CSS/contact.css"
 </head>
 <body>
 
@@ -23,7 +24,7 @@
         <div class="hero-overlay">
             <h1>PROFESSIONAL PHOTOSHOOT</h1>
             
-            <a href="#" class="btn-book-session">
+            <a href="javascript:void(0)" class="btn-book-session" onclick="openModal('photoshoot')">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;">
                     <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
                     <line x1="16" y1="2" x2="16" y2="6"></line>
@@ -53,6 +54,96 @@
         </div>
     </section>
 
-    <script src="../main.js"></script>
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-container">
+            
+            <div class="modal-header">
+                <h2>Book Pixels Studio</h2>
+                <div class="brand-line"></div>
+            </div>
+
+            <p class="modal-subtitle">Please enter your booking details</p>
+
+            <div class="progress-bar">
+                <div class="step active" id="stepIndicator1">
+                    <div class="step-circle">1</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" id="stepIndicator2">
+                    <div class="step-circle">2</div>
+                </div>
+                <div class="step-line"></div>
+                <div class="step" id="stepIndicator3">
+                    <div class="step-circle">3</div>
+                </div>
+            </div>
+
+            <form id="bookingForm" onsubmit="event.preventDefault();">
+                
+                <div class="form-step active" id="step1">
+                    <div class="input-group">
+                        <label>Full Name</label>
+                        <input type="text" placeholder="John Smith" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Phone Number</label>
+                        <input type="tel" placeholder="+233 XX XXX XXXX" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Email Address</label>
+                        <input type="email" placeholder="your@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step2">
+                    <div class="input-group">
+                        <label>Service</label>
+                        <select id="serviceSelect">
+                            <option value="photoshoot">Photoshoot</option>
+                            <option value="wedding">Wedding Coverage</option>
+                            <option value="kids">Kids Photography</option>
+                            <option value="event">Other Event</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label>Date & Time</label>
+                        <input type="datetime-local" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Location</label>
+                        <input type="text" placeholder="Accra, Ghana" required>
+                    </div>
+                </div>
+
+                <div class="form-step" id="step3">
+                    <div class="terms-scroll-box">
+                        <p>
+                            All photographic materials, such as original negatives, photos, or slides, shall be the exclusive property of the photographer. The photographer shall own the copyright in all images created and may use the work for samples, contests, exhibition, advertising and self-promotion.
+                        </p>
+                        <br>
+                        <p>
+                            Booking deposit and payment: the client shall make a booking fee as per contract to retain the studio to perform the services specified in the contract.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-navigation">
+                    <button type="button" class="nav-btn back" id="prevBtn" onclick="changeStep(-1)" style="visibility: hidden;">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button type="button" class="nav-btn next" id="nextBtn" onclick="changeStep(1)">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+
+            </form>
+
+            <div class="modal-footer-bar">
+                <button type="button" class="cancel-link" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="booking modal.js"></script>
 </body>
 </html>

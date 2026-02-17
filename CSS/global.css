@@ -15,7 +15,7 @@
     --primary: #8a0a1b;
     --primary-dark: #5C000E;
     --dark: #121212;
-    --light: #ffffff;
+    --light: #f8f9fa;
     --gray: #6c757d;
     --light-gray: #e9ecef;
     --borber-radius: 12px;
@@ -28,7 +28,7 @@
 
 /* --- 2. BASE DOCUMENT STYLES --- */
 body {
-    font-family: 'Inter', sans-serif; /* Body Font */
+    font-family: 'Inter', sans-serif;
     background-color: var(--light);
     color: var(--dark);
     line-height: 1.7;
@@ -70,6 +70,12 @@ header {
     transition: var(--transition);
 }
 
+header .container {
+    max-width: 100%; 
+    width: 100%;
+    padding: 0 4rem;
+}
+
 nav {
     font-family: 'Proza Libre', sans-serif;;
     display: flex;
@@ -79,9 +85,14 @@ nav {
 }
 
 .logo {
-    width: 80px;
-    height: auto;
+    display: flex;
+    align-items: center;
     cursor: pointer;
+}
+
+.logo img {
+    max-height: 45px;
+    width: auto;
 }
 
 .nav-links {
@@ -109,6 +120,19 @@ nav {
 }
 
 .nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--primary) !important;
+    font-weight: 700;
+}
+
+.nav-links a.active::after {
+    width: 0; 
+}
+
+.nav-links a.active:hover::after {
     width: 100%;
 }
 
@@ -187,7 +211,7 @@ footer {
     padding: 50px 0 20px;
     border-top-left-radius: 50px;
     font-size: 13px;
-    font-family: 'Inter', sans-serif; /* Footer Font */
+    font-family: 'Inter', sans-serif;
     line-height: 20px;
 }
 
@@ -224,13 +248,14 @@ footer a h4 {
     width: fit-content;
     margin-bottom: 40px;
     position: relative;
-    font-family: 'Inter', serif; /* Footer Header Font */
+    font-family: 'Inter', serif;
 }
 
-.email-id {
+.footer-head {
     width: fit-content;
     border-bottom: 1px solid #ccc;
     margin: 20px 0;
+    font-family: 'inter', sans-serif;
 }
 
 .phone-numbers a {
@@ -238,7 +263,9 @@ footer a h4 {
     color: #fff;
     text-decoration: none;
     font-weight: bold;
+    margin-top: 10px;
     margin-bottom: 5px; 
+    font-family: 'Inter', sans-serif;
 }
 
 
