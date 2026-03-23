@@ -20,9 +20,8 @@
 }
 
 html {
-    /* Fix for Safari blank space below footer */
     background-color: #0e0d0d; 
-    scroll-behavior: smooth; /* Enables elegant smooth scrolling for all anchor links site-wide */
+    scroll-behavior: smooth;
 }
 
 body {
@@ -31,7 +30,7 @@ body {
     color: var(--dark);
     line-height: 1.7;
     overflow-x: hidden; 
-    overflow-anchor: none; /* Fix for Chrome jumpy scroll glitch */
+    overflow-anchor: none;
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
@@ -76,7 +75,7 @@ section {
    ========================================= */
 
 .floating-header { 
-    position: absolute; /* Changed from fixed so it scrolls away naturally */
+    position: absolute;
     top: 30px; 
     left: 0; 
     width: 100%; 
@@ -271,7 +270,7 @@ footer {
     line-height: 20px; 
     box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.5); 
     transition: background 0.5s ease, box-shadow 0.5s ease, color 0.5s ease;
-    overflow: hidden; /* Ensure no child margins leak out to create empty space */
+    overflow: hidden;
 }
 
 .row { 
@@ -347,8 +346,8 @@ ul li a {
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Replaced var with direct value for safety */
-    color: #8a0a1b; /* var(--primary) */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    color: #8a0a1b;
     font-size: 1.2rem; 
     transition: all 0.3s ease; 
 }
@@ -372,7 +371,7 @@ hr {
 /* Footer Mobile Responsiveness */
 @media (max-width: 768px) {
     footer {
-        font-size: 15px; /* Increased for better readability */
+        font-size: 15px;
         line-height: 1.8;
         padding-top: 40px;
     }
@@ -389,11 +388,11 @@ hr {
     }
     .column h3 {
         margin-bottom: 15px;
-        font-size: 1.3rem; /* Slightly larger headings */
+        font-size: 1.3rem;
     }
     .phone-numbers a {
         font-size: 16px;
-        padding: 5px 0; /* Larger tap target */
+        padding: 5px 0;
     }
     .social-links a {
         width: 45px;
@@ -432,8 +431,6 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    /* Hidden by default */
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
@@ -446,7 +443,7 @@ hr {
 }
 
 .floating-theme-btn:active {
-    transform: scale(0.9) !important; /* Tactile thumb press feedback */
+    transform: scale(0.9) !important;
 }
 
 .floating-theme-btn.show {
@@ -465,8 +462,6 @@ hr {
     font-size: 1.2rem;
     cursor: pointer;
     box-shadow: 0 4px 15px rgba(138, 10, 27, 0.4);
-    
-    /* Hidden by default */
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
@@ -485,7 +480,7 @@ hr {
 }
 
 .scroll-top-btn:active {
-    transform: scale(0.9) !important; /* Tactile thumb press feedback */
+    transform: scale(0.9) !important;
 }
 
 /* Floating Actions Mobile Responsiveness */
@@ -514,7 +509,7 @@ hr {
     border-radius: 50%;
     border: none;
     background: transparent;
-    color: #999999; /* Matches your muted text */
+    color: #999999;
     font-size: 1.2rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -522,7 +517,6 @@ hr {
     z-index: 2;
 }
 
-/* Dark Mode Hover */
 #theme-toggle:hover,
 .mobile-toggle:hover {
     color: #ffffff;
@@ -530,12 +524,10 @@ hr {
     transform: scale(1.05);
 }
 
-/* Light Mode Overrides */
 body.light-theme #theme-toggle {
     color: #555555;
 }
 
-/* Light Mode Hover */
 body.light-theme #theme-toggle:hover,
 body.light-theme .mobile-toggle:hover {
     color: #111111;
@@ -547,7 +539,7 @@ body.light-theme .mobile-toggle:hover {
    ========================================= */
 
 body.light-theme {
-    background-color: #faf8f5; /* Warm ivory white */
+    background-color: #faf8f5;
     background-image: var(--noise-texture);
     color: #111111;
     scrollbar-color: #cccccc #faf8f5;
@@ -555,8 +547,8 @@ body.light-theme {
 
 /* Light Theme Text Selection */
 body.light-theme ::selection {
-    background-color: rgba(138, 10, 27, 0.15); /* Soft transparent red tint */
-    color: #8a0a1b; /* var(--primary) */
+    background-color: rgba(138, 10, 27, 0.15);
+    color: #8a0a1b;
 }
 body.light-theme ::-moz-selection {
     background-color: rgba(138, 10, 27, 0.15);
@@ -573,7 +565,7 @@ body.light-theme ::-webkit-scrollbar-thumb {
 }
 body.light-theme::-webkit-scrollbar-thumb:hover,
 body.light-theme ::-webkit-scrollbar-thumb:hover {
-    background: #8a0a1b; /* var(--primary) */
+    background: #8a0a1b;
 }
 
 body.light-theme .section-title,
@@ -599,13 +591,12 @@ body.light-theme .nav-divider {
     background: rgba(0, 0, 0, 0.15);
 }
 
-/* Navigation Text Logic (Now controlled by JavaScript) */
+/* Navigation Element Stacking States */
 body.light-theme .nav-item i, 
 body.light-theme .nav-item span {
     color: #555555 !important; 
 }
 
-/* White text ONLY when JS applies the red slider behind it */
 body.light-theme .nav-item.has-slider i, 
 body.light-theme .nav-item.has-slider span {
     color: #ffffff !important; 
@@ -645,7 +636,7 @@ body.light-theme .btn-outline:active {
     width: auto;
 }
 
-/* Default State (Dark Mode) */
+/* Stacking context: Toggles visual block state based on theme hierarchy */
 .logo-light {
     display: none !important;
 }
@@ -654,7 +645,6 @@ body.light-theme .btn-outline:active {
     display: block !important;
 }
 
-/* Light Theme State */
 body.light-theme .logo-dark {
     display: none !important;
 }
@@ -671,7 +661,6 @@ body.light-theme footer {
     box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1) !important; 
 }
 
-/* Force text inside the footer to stay white so it is readable on the dark red background */
 body.light-theme footer p,
 body.light-theme footer a,
 body.light-theme footer span,
@@ -681,12 +670,10 @@ body.light-theme footer .footer-head {
     color: rgba(255, 255, 255, 0.9) !important; 
 }
 
-/* Keep phone numbers bright */
 body.light-theme footer .phone-numbers a {
     color: #ffffff !important;
 }
 
-/* Ensure social icons stay Red inside White circles */
 body.light-theme footer .social-links a {
     color: #8a0a1b !important; 
     background-color: #ffffff !important;
@@ -702,8 +689,8 @@ body.light-theme footer .social-links a {
         align-items: center;
         justify-content: center;
         position: absolute;
-        top: 10px;
-        right: calc(5% + 15px); /* Align perfectly inside the glass nav */
+        top: 15px;
+        right: calc(5% + 20px);
         z-index: 10001;
         height: 40px;
         width: 40px;
@@ -713,18 +700,19 @@ body.light-theme footer .social-links a {
     }
     
     .mobile-toggle:active {
-        transform: scale(0.85); /* Satisfying tactile button squish on tap */
+        transform: scale(0.85);
     }
     
     .glass-nav {
         width: 90%;
         flex-direction: column;
         align-items: flex-start;
-        border-radius: 20px;
-        padding: 10px 20px;
+        border-radius: 24px;
+        padding: 15px 25px;
+        gap: 0;
     }
     .nav-logo {
-        padding: 5px 0;
+        padding: 0;
     }
     .nav-divider, .nav-slider {
         display: none !important;
@@ -760,18 +748,16 @@ body.light-theme footer .social-links a {
     #theme-toggle {
         display: flex;
         position: absolute;
-        top: 8px;
-        right: 65px; /* Positions it securely to the left of the 40px hamburger menu */
+        top: 13px;
+        right: calc(5% + 70px);
         z-index: 10001;
         margin: 0;
     }
     
-    /* Overrides for Light Theme & Hover States */
     body.light-theme .nav-item {
         border-top-color: rgba(0,0,0,0.05);
     }
     
-    /* Swap JS Slider Colors for simple text highlights on mobile */
     .nav-item.has-slider i,
     .nav-item.has-slider span {
         color: #999 !important;

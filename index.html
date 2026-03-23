@@ -20,11 +20,17 @@
 </head>
 <body>
     
+    <!-- =========================================
+         THEME INITIALIZATION
+    ========================================== -->
     <script>
         // Prevent FOIT (Flash of Inaccurate Theme)
         if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
     </script>
     
+    <!-- =========================================
+         HEADER & NAVIGATION
+    ========================================== -->
     <header class="floating-header" id="main-header">
         <nav class="glass-nav" id="nav-links">
             <a href="index.html" class="brand-logo-link">
@@ -44,7 +50,11 @@
         </nav>
         <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
     </header>
+    <!-- /HEADER END -->
     
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
     <section id="home" class="hero">
         <div class="container">
             <div class="hero-content">
@@ -60,7 +70,11 @@
             </div>
         </div>
     </section>
+    <!-- /HERO SECTION END -->
 
+    <!-- =========================================
+         ABOUT SNIPPET SECTION
+    ========================================== -->
     <section class="home-about">
         <div class="container perspective-container">
             <div class="about-3d-card reveal-up">
@@ -71,7 +85,11 @@
             </div>
         </div>
     </section>
+    <!-- /ABOUT SNIPPET END -->
 
+    <!-- =========================================
+         SERVICES SECTION
+    ========================================== -->
     <section id="services" class="home-services">
         <div class="container">
             <h2 class="section-title" style="color: white;">Our Expertise</h2>
@@ -141,7 +159,11 @@
             </div>
         </div>
     </section>
+    <!-- /SERVICES SECTION END -->
 
+    <!-- =========================================
+         CONTACT SECTION
+    ========================================== -->
     <section id="contact" class="home-contact">
         <div class="container">
             <h2 class="section-title" style="color: white;">Contact Us</h2>
@@ -200,7 +222,11 @@
             </div>
         </div>
     </section>
+    <!-- /CONTACT SECTION END -->
 
+    <!-- =========================================
+         FOOTER SECTION
+    ========================================== -->
     <footer>
         <div class="row">
             <div class="column">
@@ -243,7 +269,11 @@
         <hr>
         <p class="copyright">&copy; Pixels Studio 2025 - All Rights Reserved</p>
     </footer>
+    <!-- /FOOTER END -->
 
+    <!-- =========================================
+         BOOKING MODAL
+    ========================================== -->
     <div id="bookingModal" class="modal-overlay">
         <div class="modal-container">
             <div class="modal-header"><h2>Book Pixels Studio</h2><div class="brand-line"></div></div>
@@ -289,7 +319,11 @@
             <div class="modal-footer-bar"><button type="button" class="cancel-link" onclick="closeModal()">Cancel</button></div>
         </div>
     </div>
+    <!-- /BOOKING MODAL END -->
 
+    <!-- =========================================
+         FLOATING ACTIONS (THEME & SCROLL)
+    ========================================== -->
     <div class="floating-actions">
         <button class="floating-theme-btn" aria-label="Toggle Theme">
             <i class="fa-solid fa-moon"></i>
@@ -298,7 +332,11 @@
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>
+    <!-- /FLOATING ACTIONS END -->
 
+    <!-- =========================================
+         SCRIPTS
+    ========================================== -->
     <script src="main.js"></script>
 </body>
 </html>

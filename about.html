@@ -17,11 +17,17 @@
 </head>
 <body>
 
+    <!-- =========================================
+         THEME INITIALIZATION
+    ========================================== -->
     <script>
         // Prevent FOIT (Flash of Inaccurate Theme)
         if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
     </script>
 
+    <!-- =========================================
+         HEADER & NAVIGATION
+    ========================================== -->
     <header class="floating-header" id="main-header">
         <nav class="glass-nav" id="nav-links">
         <a href="index.html" class="brand-logo-link">
@@ -58,14 +64,22 @@
             <i class="fas fa-bars"></i>
         </div>
     </header>
+    <!-- /HEADER END -->
 
+    <!-- =========================================
+         HERO SECTION
+    ========================================== -->
     <div class="about-hero" style="background-image: url('Assets/camera.jpeg');">
         <div class="hero-overlay">
             <h1>BEHIND THE LENS</h1>
             <p>Turning Moments Into Timeless Memories</p>
         </div>
     </div>
+    <!-- /HERO SECTION END -->
 
+    <!-- =========================================
+         ABOUT INTRODUCTION
+    ========================================== -->
     <section class="about-intro">
         <div class="container">
             <div class="about-grid">
@@ -87,7 +101,11 @@
             </div>
         </div>
     </section>
+    <!-- /ABOUT INTRODUCTION END -->
 
+    <!-- =========================================
+         FOOTER SECTION
+    ========================================== -->
     <footer>
         <div class="row">
             <div class="column">
@@ -130,7 +148,11 @@
         <hr>
         <p class="copyright">&copy; Pixels Studio 2025 - All Rights Reserved</p>
     </footer>
+    <!-- /FOOTER END -->
 
+    <!-- =========================================
+         FLOATING ACTIONS
+    ========================================== -->
     <div class="floating-actions">
         <button class="floating-theme-btn" aria-label="Toggle Theme">
             <i class="fa-solid fa-moon"></i>
@@ -139,7 +161,11 @@
             <i class="fas fa-arrow-up"></i>
         </button>
     </div>
+    <!-- /FLOATING ACTIONS END -->
 
+    <!-- =========================================
+         SCRIPTS
+    ========================================== -->
     <script src="main.js"></script>
 </body>
 </html>

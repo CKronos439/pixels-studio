@@ -15,18 +15,18 @@ body {
     display: flex; 
     align-items: center; 
     justify-content: center; 
-    padding-top: 180px; /* Increased to push brand text down */
+    padding-top: 180px;
     background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.75)), url('../Assets/background.jpeg') no-repeat center center/cover; 
     background-attachment: fixed; 
     transition: background 0.5s ease;
 }
 
-/* Fix for mobile browser bug with fixed backgrounds */
+/* Mobile Architecture Override: Disables fixed attachment to correct portrait viewport scaling */
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll !important;
-        min-height: 100dvh; /* Mobile height proportion fix */
-        background-position: center top !important; /* Better framing for mobile portraits */
+        min-height: 100dvh;
+        background-position: center top !important;
     }
 }
 
@@ -108,7 +108,6 @@ body {
     justify-content: center;
 }
 
-/* Hero Button Mobile Full Width */
 @media (max-width: 480px) {
     .button-group {
         flex-direction: column;
@@ -142,7 +141,7 @@ body {
 .home-about {
     padding: 100px 0;
     background-color: #0a0a0a;
-    scroll-margin-top: 90px; /* Offset bumper */
+    scroll-margin-top: 90px;
     transition: background-color 0.5s ease;
 }
 
@@ -214,7 +213,7 @@ body {
 .home-services {
     padding: 100px 0 150px;
     background-color: #111;
-    scroll-margin-top: 90px; /* Offset bumper */
+    scroll-margin-top: 90px;
     transition: background-color 0.5s ease;
 }
 
@@ -382,7 +381,7 @@ body {
     min-height: 80vh;
     display: flex;
     align-items: center;
-    scroll-margin-top: 90px; /* Offset bumper */
+    scroll-margin-top: 90px;
     transition: background-color 0.5s ease;
 }
 
@@ -452,7 +451,6 @@ body {
     font-weight: 700;
 }
 
-/* Detail Items Contact Grid */
 body.light-theme .detail-item.clickable:hover {
     background: #fdfdfd;
     box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -533,21 +531,20 @@ body.light-theme .about-3d-card p {
         grid-template-columns: 1fr;
     }
     .booking-cta-card {
-        position: static; /* Disable sticky scrolling on mobile */
+        position: static;
         padding: 40px 20px;
     }
 }
 
-/* Home Typography Mobile Reduction (Phone specific) */
 @media (max-width: 480px) {
     .hero-intro {
         font-size: 1.2rem;
     }
     .brand-huge {
-        font-size: clamp(3.8rem, 15vw, 6rem); /* Increased minimum bound for mobile */
+        font-size: clamp(3.8rem, 15vw, 6rem);
     }
     .hero-subtext {
-        font-size: 0.85rem; /* Reduced to emphasize the brand text */
+        font-size: 0.85rem;
     }
     .about-3d-card h2,
     .card-overlay h3,
@@ -579,7 +576,6 @@ body.light-theme .about-3d-card p {
    HOME PAGE LIGHT MODE (NO CONTACT STYLES)
    ========================================= */
 
-/* Hero Section (Keep Dark & Cinematic) */
 body.light-theme .hero {
     background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../Assets/background.jpeg') no-repeat center center/cover !important;
 }
@@ -588,7 +584,6 @@ body.light-theme .hero-subtext {
     color: #111111 !important;
 }
 
-/* About Snippet Section */
 body.light-theme .home-about {
     background-color: #f8f9fa !important;
 }
@@ -605,7 +600,6 @@ body.light-theme .about-3d-card p {
     color: #555555 !important;
 }
 
-/* Services Section */
 body.light-theme .home-services {
     background-color: #faf8f5 !important; 
     background-image: var(--noise-texture) !important;
@@ -643,18 +637,15 @@ body.light-theme .view-port-btn:hover {
    CONTACT PAGE LIGHT THEME OVERRIDES
    ========================================= */
 
-/* Hub Background */
 body.light-theme .contact-hub,
 body.light-theme .home-contact {
-    background-color: #f8f9fa !important; /* Light gray background */
+    background-color: #f8f9fa !important;
 }
 
-/* Left Column: Intro Text */
 body.light-theme .contact-intro {
     color: var(--gray) !important; 
 }
 
-/* The Individual Contact Boxes */
 body.light-theme .detail-item {
     background: white !important;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
@@ -664,7 +655,7 @@ body.light-theme .detail-item {
 
 body.light-theme .detail-item.clickable:hover {
     box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
-    border-left: 4px solid var(--primary) !important; /* Dark Red accent on hover */
+    border-left: 4px solid var(--primary) !important;
     background: white !important;
 }
 
@@ -676,14 +667,12 @@ body.light-theme .detail-item span {
     color: var(--gray) !important;
 }
 
-/* Right Column: Booking Call-to-Action */
 body.light-theme .booking-cta-card {
     background: white !important;
     box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
     border: 1px solid rgba(0,0,0,0.05) !important;
 }
 
-/* Your specific primary red color for the heading */
 body.light-theme .booking-cta-card h3 {
     color: var(--primary) !important;
 }
@@ -692,7 +681,6 @@ body.light-theme .booking-cta-card p {
     color: var(--gray) !important;
 }
 
-/* Big Book Button specific light shadows */
 body.light-theme .big-book-btn {
     background-color: var(--primary) !important;
     color: white !important;

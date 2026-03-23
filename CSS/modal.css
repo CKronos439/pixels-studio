@@ -9,7 +9,7 @@
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
-    z-index: 10005; /* Keeps modal above the 9999 z-index floating buttons and header */
+    z-index: 10005; /* Stacking context: Ensures modal overlay sits entirely above the 9999 z-index floating navigation */
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(8px);
@@ -179,7 +179,7 @@
     transition: color 0.5s ease;
 }
 
-/* Fix for dark mode calendar icon visibility */
+/* Stacking context: Inverts calendar icon color to ensure visibility against dark inputs */
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     filter: invert(1);
     cursor: pointer;
@@ -291,7 +291,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     color: white; 
 }
 
-/* Custom Error State */
+/* Validation: Visual feedback state for invalid form inputs */
 .input-error {
     border-color: #ff4d4d !important;
     box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.2) !important;
@@ -313,7 +313,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     }
 }
 
-/* Inline Tooltip Styling */
+/* Validation: Inline error message styling injected via JavaScript */
 .error-message {
     display: block;
     color: #ff4d4d;
@@ -344,7 +344,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     gap: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    z-index: 10015; /* Safely above everything, including the modal overlay */
+    z-index: 10015; /* Stacking context: Sits atop everything, including the 10005 z-index modal overlay */
     opacity: 0;
     visibility: hidden;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -382,14 +382,13 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
    MODAL FADE ANIMATIONS
    ========================================= */
 
-/* Opening state (should already be in your CSS) */
 .modal-overlay {
     display: none;
     opacity: 0;
     transition: opacity 0.4s ease;
 }
 
-/* When display: flex is added via JS, also trigger opacity */
+/* Triggers CSS entrance animation asynchronously when Javascript updates inline display property */
 .modal-overlay[style*="display: flex"] {
     animation: fadeInOverlay 0.4s ease-out forwards;
 }
@@ -398,7 +397,6 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     animation: scaleInContainer 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* The NEW closing state triggered by JavaScript */
 .modal-overlay.closing {
     animation: fadeOutOverlay 0.4s ease-in forwards;
 }
@@ -473,7 +471,7 @@ body.light-theme .step-circle {
     color: #555555;
 }
 body.light-theme .step.active .step-circle {
-    background-color: #8a0a1b; /* var(--primary) */
+    background-color: #8a0a1b;
     color: #ffffff;
 }
 body.light-theme .step-line {
@@ -492,7 +490,7 @@ body.light-theme .input-group input:focus,
 body.light-theme .input-group select:focus {
     background: #ffffff;
     border-color: #8a0a1b;
-    box-shadow: 0 0 0 4px rgba(138, 10, 27, 0.15); /* Matches light theme selection highlight */
+    box-shadow: 0 0 0 4px rgba(138, 10, 27, 0.15);
 }
 
 body.light-theme ::placeholder {

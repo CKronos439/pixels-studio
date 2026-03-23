@@ -2,7 +2,7 @@
    SERVICE PAGE SUCCESSION & REPEAT LOGIC
    ========================================= */
 
-/* Forces title and button to stack vertically */
+/* Architecture: Flexbox is utilized here to perfectly center the hero titles and buttons */
 .hero-overlay {
     display: flex;
     flex-direction: column;
@@ -33,14 +33,13 @@
     animation-delay: 0.4s;
 }
 
-/* Scroll-reveal for gallery items */
+/* Stacking architecture: Declares origin coordinates for intersection observer transitions */
 .gallery-item {
     opacity: 0;
     transform: translateY(40px);
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* JavaScript toggles this class on and off to allow repeats */
 .gallery-item.active {
     opacity: 1;
     transform: translateY(0);
@@ -50,7 +49,7 @@
    SHARED SERVICE PAGE STYLES
    ========================================= */
 
-/* Hero Container Baseline */
+/* Architecture: Fixed positioning keeps the background stationary while the page content scrolls over it */
 .kids-hero, .photoshoot-hero, .weddings-hero {
     position: fixed;
     top: 0;
@@ -154,6 +153,7 @@
 }
 
 /* Introduction Content Blocks */
+/* Architecture: Margin-top creates a physical gap that reveals the fixed hero background underneath */
 .kids-intro, .photoshoot-intro, .weddings-intro {
     position: relative;
     z-index: 10;
@@ -193,7 +193,7 @@
     font-weight: 700;
 }
 
-/* Shared Gallery Layout */
+/* Architecture: Flex-wrap allows the gallery to act as a responsive masonry grid without media queries */
 .gallery-grid {
     display: flex;
     justify-content: center;
@@ -223,6 +223,7 @@
     transform: translateY(-5px);
 }
 
+/* Architecture: Object-fit ensure images fill their squircle containers without stretching or squishing */
 .gallery-item img {
     width: 100%;
     height: 100%;
@@ -254,14 +255,12 @@ body.light-theme {
     background-image: var(--noise-texture) !important;
 }
 
-/* Lighten the hero background image for readability */
 body.light-theme .photoshoot-hero,
 body.light-theme .kids-hero,
 body.light-theme .weddings-hero {
     box-shadow: inset 0 0 0 1000px rgba(255,255,255,0.6) !important;
 }
 
-/* Swap Intro Content block to light mode gradient */
 body.light-theme .photoshoot-intro,
 body.light-theme .kids-intro,
 body.light-theme .weddings-intro {
@@ -280,7 +279,6 @@ body.light-theme .hero-overlay p {
     color: #555555 !important;
 }
 
-/* Service Intro Text Styles */
 body.light-theme .intro-welcome,
 body.light-theme .projects-title {
     color: #111111 !important;
@@ -290,7 +288,6 @@ body.light-theme .intro-text {
     color: #555555 !important;
 }
 
-/* "See More" Button Overrides */
 body.light-theme .see-more-btn {
     color: #111111 !important;
     border-color: rgba(0, 0, 0, 0.15) !important;

@@ -31,7 +31,6 @@
     }
 }
 
-/* Target existing Home/About Hero classes */
 .brand-huge, 
 .hero-intro, 
 .hero-subtext, 
@@ -42,7 +41,6 @@
     animation: heroFadeIn 1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Load Succession Delays */
 .hero-intro {
     animation-delay: 0.4s;
 }
@@ -63,7 +61,6 @@
    2. REPEATING SCROLL REVEAL ENGINE
    ========================================= */
 
-/* Base state for all elements waiting to be revealed */
 .scroll-reveal {
     opacity: 0;
     will-change: transform, opacity;
@@ -71,13 +68,11 @@
     transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Active state triggered by main.js Observer */
 .scroll-reveal.active {
     opacity: 1 !important;
     transform: translateY(0) scale(1) !important;
 }
 
-/* Optional directional classes to use alongside .scroll-reveal */
 .scroll-reveal.reveal-left {
     transform: translateX(-30px);
 }
@@ -95,7 +90,6 @@
    3. SERVICE CARD SUCCESSION DELAYS
    ========================================= */
 
-/* These ensure cards pop up one after another when .active is added */
 .delay-100 {
     transition-delay: 0.2s !important;
 }

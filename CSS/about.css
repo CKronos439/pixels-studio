@@ -22,7 +22,7 @@
     transition: box-shadow 0.5s ease;
 }
 
-/* Fix for mobile background scaling & layout shifts */
+/* Architecture Override: Prevents iOS rendering layout shifts when scrolling masks viewport */
 @media (max-width: 768px) {
     .about-hero {
         position: absolute;
@@ -36,7 +36,7 @@
 /* --- 2. HERO OVERLAY CONTENT --- */
 .hero-overlay h1 {
     color: white;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Header Font */
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 3.5rem;
     margin-bottom: 10px;
     font-weight: 900;
@@ -44,7 +44,7 @@
 }
 
 .hero-overlay p {
-    font-family: 'Inter', sans-serif; /* Subtitle Font */
+    font-family: 'Inter', sans-serif;
     color: #f8f9fa;
     font-size: 1.5rem;
     font-weight: 700;
@@ -56,13 +56,13 @@
     position: relative;
     z-index: 10;
     margin-top: calc(80vh - 100px);
-    background: #151515; /* A distinct, elevated shade of black */
-    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Clean separation edge */
+    background: #151515;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     padding: 100px 20px;
     min-height: 100vh;
-    box-shadow: 0 -15px 40px rgba(0,0,0,0.7); /* Stronger upward shadow */
+    box-shadow: 0 -15px 40px rgba(0,0,0,0.7);
     transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -76,7 +76,7 @@
 }
 
 .about-text h2 {
-    font-family: Playfair Display sans-serif; /* Section Header Font */
+    font-family: Playfair Display, sans-serif;
     font-size: 2.5rem;
     margin-bottom: 20px;
     color: #ffffff;
@@ -138,7 +138,6 @@
    ABOUT PAGE LIGHT THEME OVERRIDES
    ========================================= */
 
-/* 1. Lighten the Hero image overlay */
 body.light-theme .about-hero {
     box-shadow: inset 0 0 0 1000px rgba(255,255,255,0.6) !important;
 }
@@ -151,13 +150,11 @@ body.light-theme .hero-overlay p {
     color: #333333 !important;
 }
 
-/* 2. Switch the section background to off-white */
 body.light-theme .about-intro {
     background-color: #faf8f5 !important;
     background-image: var(--noise-texture) !important;
 }
 
-/* 3. Darken the text for readability */
 body.light-theme .about-text h2 {
     color: #111111 !important;
 }

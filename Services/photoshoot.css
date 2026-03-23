@@ -37,6 +37,7 @@ a {
     transition: var(--transition);
 }
 
+/* Architecture: Fixed positioning keeps the background stationary while the page content scrolls over it */
 .photoshoot-hero {
     position: fixed;
     top: 0;
@@ -51,13 +52,14 @@ a {
     text-align: center;
 }
 
-/* Fix for mobile background scaling & layout shifts */
+/* Architecture Override: Prevents iOS rendering layout shifts when scrolling masks viewport */
 @media (max-width: 768px) {
     .photoshoot-hero {
         position: absolute;
     }
 }
 
+/* Architecture: Flexbox is utilized here to perfectly center the hero titles and buttons */
 .hero-overlay {
     width: 100%;
     display: flex;
@@ -95,6 +97,7 @@ a {
     }
 }
 
+/* Interaction Design: CTA button with gradient and tactile hover states */
 .btn-book-session {
     font-family: 'Inter', sans-serif;
     display: inline-flex;
@@ -116,6 +119,7 @@ a {
     transform: translateY(-3px) scale(0.98);
 }
 
+/* Visual Stacking: Keeps back button strictly above the hero overlay text */
 .floating-back-btn {
     position: absolute;
     top: 30px;
@@ -138,6 +142,7 @@ a {
     transform: scale(1.05);
 }
 
+/* Architecture: Margin-top creates a physical gap that reveals the fixed hero background underneath */
 .photoshoot-intro {
     position: relative;
     z-index: 10;
@@ -204,6 +209,7 @@ a {
     font-weight: 700;
 }
 
+/* Architecture: Flex-wrap allows the gallery to act as a responsive masonry grid without media queries */
 .gallery-grid {
     display: flex;
     justify-content: center;
@@ -226,6 +232,7 @@ a {
     transform: translateY(-5px);
 }
 
+/* Architecture: Object-fit ensures images fill their containers without stretching or squishing */
 .gallery-item img {
     width: 100%;
     height: 100%;
