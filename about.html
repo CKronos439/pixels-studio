@@ -4,35 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Pixels Studio</title>
-    <link rel="stylesheet" href="CSS/global.css">
-    <link rel="stylesheet" href="CSS/about.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" 
-          integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Proza+Libre:wght@400;500;600&display=swap">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Proza+Libre:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/about.css">
+    <link rel="stylesheet" href="CSS/responsive.css">
+    <link rel="stylesheet" href="CSS/animations.css">
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <nav>
-                <a href="index.html" class="logo">
-                    <img src="Assets/pixels studio.png" alt="Pixels Studio">
-                </a>
-                <ul class="nav-links">
-                    <li><a href="index.html">HOME</a></li>
-                    <li><a href="about.html" class="active">ABOUT</a></li>
-                    <li><a href="services.html">SERVICES</a></li>
-                    <li><a href="contact.html">CONTACT <i class="fas fa-paper-plane"></i></a></li>
-                </ul>
-                <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
-            </nav>
+    <script>
+        // Prevent FOIT (Flash of Inaccurate Theme)
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
+    </script>
+
+    <header class="floating-header" id="main-header">
+        <nav class="glass-nav" id="nav-links">
+        <a href="index.html" class="brand-logo-link">
+            <img src="Assets/pixels studio footer.png" alt="Pixels Studio" class="logo-dark">
+            <img src="Assets/pixels studio.png" alt="Pixels Studio" class="logo-light">
+        </a>
+        
+        <div class="nav-divider"></div>
+        <div class="nav-slider" id="nav-slider"></div>
+        
+        <a href="index.html" class="nav-item">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="about.html" class="nav-item active">
+            <i class="fa-regular fa-user"></i>
+            <span>About</span>
+        </a>
+        <a href="index.html#services" class="nav-item">
+            <i class="fa-solid fa-camera"></i>
+            <span>Services</span>
+        </a>
+        <a href="index.html#contact" class="nav-item">
+            <i class="fa-regular fa-envelope"></i>
+            <span>Contact</span>
+        </a>
+
+        <button id="theme-toggle" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        </nav>
+        
+        <div class="mobile-toggle">
+            <i class="fas fa-bars"></i>
         </div>
     </header>
 
-    <div class="about-hero" style="background-image: url('Assets/image1.jpg');">
+    <div class="about-hero" style="background-image: url('Assets/camera.jpeg');">
         <div class="hero-overlay">
             <h1>BEHIND THE LENS</h1>
             <p>Turning Moments Into Timeless Memories</p>
@@ -41,26 +68,23 @@
 
     <section class="about-intro">
         <div class="container">
-            
             <div class="about-grid">
-                <div class="about-text">
+                
+                <div class="about-text reveal-up">
                     <h2>Who We Are</h2>
                     <hr style="width: 200px; border: 2px solid var(--primary); margin: 0 0 20px 0;">
-                    
                     <p>We are Pixels Studio, and we want to capture beautiful images that will provide you with precious memories for years to come.</p>
-                    
                     <p>With a keen eye for detail and a passion for storytelling, we specialize in creating stunning visuals that truly reflect your unique personality and style. Whether it's a wedding, portrait session, or special event, we are dedicated to delivering exceptional results that exceed your expectations.</p>
-                    
                     <p>Let us help you preserve your most cherished moments through the art of photography.</p>
                     
-                    <a href="contact.html" class="btn btn-primary" style="margin-top: 20px;">Let's Create Together</a>
+                    <a href="index.html#contact" class="btn btn-primary" style="margin-top: 20px;">Let's Create Together</a>
                 </div>
-
-                <div class="about-image">
-                    <img src="Assets/image1.jpg" alt="Photographer at work">
+                
+                <div class="about-image reveal-up delay-100">
+                    <img src="Assets/pixels.jpeg" alt="Photographer at work">
                 </div>
+                
             </div>
-
         </div>
     </section>
 
@@ -68,9 +92,7 @@
         <div class="row">
             <div class="column">
                 <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo">
-                <p>Capturing moments that matter. 
-                    We turn fleeting seconds into lasting memories with a focus on natural light and genuine emotion. 
-                    For inquiries regarding rates, availability, or to book a session, please use the contact form</p>
+                <p>Capturing moments that matter. We turn fleeting seconds into lasting memories with a focus on natural light and genuine emotion. For inquiries regarding rates, availability, or to book a session, please use the contact form.</p>
             </div>
             <div class="column">
                 <h3 class="footer-head">Office</h3>
@@ -79,16 +101,16 @@
                 
                 <div class="phone-numbers">
                     <a href="tel:+233549216815"><i class="fas fa-phone "></i> +233 54 921 6815</a>
-                <a href="tel:+233206661411"><i class="fas fa-phone "></i> +233 20 666 1411</a>        
+                    <a href="tel:+233206661411"><i class="fas fa-phone "></i> +233 20 666 1411</a>        
                 </div>
             </div>
             <div class="column">
                 <h3 class="footer-head">Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="services.html">Services</a></li>
+                    <li><a href="#services">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact </a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="column">
@@ -98,19 +120,26 @@
                 <p class="footer-head">Sunday: Closed</p>
 
                 <div class="social-links">
-                    <a href="https://wa.me/233206661411" target="_blank" aria-label="whatsapp"><i class="fab fa-whatsapp"></i></a>
-                    <a href="#" target="_blank" aria-label="facebook"><i class="fab fa-facebook"></i></a>
-                    <a href="#" target="_blank" aria-label="Mail"><i class="fas fa-envelope"></i></a>
-                    <a href="#" target="_blank" aria-label="Intsagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://api.whatsapp.com/send?phone=233206661411" target="_blank" aria-label="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/1H8iUNTqra" target="_blank" aria-label="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="mailto:pixelsstudio4@gmail.com" target="_blank" aria-label="Mail"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/pixels_studiogh?igsh=cnNvaXIydzd5eWc1" target="_blank" aria-label="Intsagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
         </div>
         <hr>
         <p class="copyright">&copy; Pixels Studio 2025 - All Rights Reserved</p>
-        <p class="copyright">&copy; CKronos - All Rights Reserved</p>
     </footer>
 
+    <div class="floating-actions">
+        <button class="floating-theme-btn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
 
-    <link rel="script" href="main.js">
+    <script src="main.js"></script>
 </body>
 </html>

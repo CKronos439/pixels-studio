@@ -18,8 +18,19 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    box-shadow: var(--shadow-xlg);
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.4);
+    transition: box-shadow 0.5s ease;
+}
+
+/* Fix for mobile background scaling & layout shifts */
+@media (max-width: 768px) {
+    .about-hero {
+        position: absolute;
+        height: 80dvh;
+    }
+    .about-intro {
+        margin-top: calc(80dvh - 100px);
+    }
 }
 
 /* --- 2. HERO OVERLAY CONTENT --- */
@@ -28,7 +39,8 @@
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /* Header Font */
     font-size: 3.5rem;
     margin-bottom: 10px;
-    font-weight: 800;
+    font-weight: 900;
+    transition: color 0.5s ease;
 }
 
 .hero-overlay p {
@@ -36,6 +48,7 @@
     color: #f8f9fa;
     font-size: 1.5rem;
     font-weight: 700;
+    transition: color 0.5s ease;
 }
 
 /* --- 3. SCROLLING INTRO CONTENT --- */
@@ -43,12 +56,14 @@
     position: relative;
     z-index: 10;
     margin-top: calc(80vh - 100px);
-    background: white;
+    background: #151515; /* A distinct, elevated shade of black */
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Clean separation edge */
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
     padding: 100px 20px;
     min-height: 100vh;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 -15px 40px rgba(0,0,0,0.7); /* Stronger upward shadow */
+    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
 }
 
 
@@ -64,7 +79,8 @@
     font-family: Playfair Display sans-serif; /* Section Header Font */
     font-size: 2.5rem;
     margin-bottom: 20px;
-    color: var(--dark);
+    color: #ffffff;
+    transition: color 0.5s ease;
 }
 
 .highlight-text {
@@ -77,10 +93,75 @@
 .about-text p {
     margin-bottom: 20px;
     color: var(--gray);
+    transition: color 0.5s ease;
 }
 
 .about-image img {
     width: 100%;
     border-radius: 30px;
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    filter: brightness(0.75);
+    transition: filter 0.3s ease;
+}
+
+.about-image img:hover {
+    filter: brightness(0.95);
+}
+
+/* About Page Mobile Responsiveness */
+@media (max-width: 768px) {
+    .about-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+}
+
+/* About Typography Mobile Reduction */
+@media (max-width: 480px) {
+    .hero-overlay h1 {
+        font-size: 2.5rem;
+        font-weight: 900;
+    }
+    .hero-overlay p {
+        font-size: 1.1rem;
+    }
+    .about-text h2 {
+        font-size: 2rem;
+    }
+    .highlight-text {
+        font-size: 1rem;
+    }
+}
+
+/* =========================================
+   ABOUT PAGE LIGHT THEME OVERRIDES
+   ========================================= */
+
+/* 1. Lighten the Hero image overlay */
+body.light-theme .about-hero {
+    box-shadow: inset 0 0 0 1000px rgba(255,255,255,0.6) !important;
+}
+
+body.light-theme .hero-overlay h1 {
+    color: #111111 !important;
+}
+
+body.light-theme .hero-overlay p {
+    color: #333333 !important;
+}
+
+/* 2. Switch the section background to off-white */
+body.light-theme .about-intro {
+    background-color: #faf8f5 !important;
+    background-image: var(--noise-texture) !important;
+}
+
+/* 3. Darken the text for readability */
+body.light-theme .about-text h2 {
+    color: #111111 !important;
+}
+
+body.light-theme .about-text p {
+    color: #555555 !important;
 }

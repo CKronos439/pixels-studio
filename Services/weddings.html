@@ -4,33 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weddings | Pixels Studio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Roboto:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet"/>
-        <!-- Font Awesome for Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="weddings.css">
-    <link rel="stylesheet" href="../CSS/contact.css">
+    <link rel="stylesheet" href="../CSS/global.css">
+    <link rel="stylesheet" href="../CSS/modal.css">
+    <link rel="stylesheet" href="service-animations.css">
 </head>
 <body>
 
+    <script>
+        // Prevent FOIT (Flash of Inaccurate Theme)
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
+    </script>
+
     <header class="weddings-hero">
-        
-        <a href="../services.html" class="floating-back-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-            </svg>
+        <a href="../#services" class="floating-back-btn">
+            <i class="fas fa-arrow-left"></i>
         </a>
 
         <div class="hero-overlay">
-            <h1>WEDDINGS</h1>
+            <h1 class="load-reveal delay-load-1">WEDDINGS</h1>
             
-            <a href="javascript:void(0)" class="btn-book-session" onclick="openModal('wedding')">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right:8px;">
-                    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                    <line x1="16" y1="2" x2="16" y2="6"></line>
-                    <line x1="8" y1="2" x2="8" y2="6"></line>
-                    <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
+            <a href="javascript:void(0)" class="btn-book-session load-reveal delay-load-2" onclick="openModal('wedding')">
+                <i class="fas fa-calendar-alt" style="margin-right:8px;"></i>
                 Book a Session
             </a>
         </div>
@@ -38,9 +35,9 @@
 
     <section class="weddings-intro">
         <div class="container">
-            <p class="intro-welcome">Welcome to Pixels Studio's Professional Photoshoot Catalogue.</p>
+            <p class="intro-welcome">Welcome to Pixels Studio's Wedding Catalogue.</p>
             <p class="intro-text">
-                We specialize in Weddings. Browse through to see some of our favorite works, and when you're ready, you can book a session. Let's create something beautiful together.
+                We specialize in Weddings. Browse through to see some of our favorite works, and when you're ready, you can book a session.
             </p>
             
             <h3 class="projects-title">PROJECTS</h3>
@@ -67,14 +64,17 @@
             <div class="progress-bar">
                 <div class="step active" id="stepIndicator1">
                     <div class="step-circle">1</div>
+                    <span>Your details</span>
                 </div>
                 <div class="step-line"></div>
                 <div class="step" id="stepIndicator2">
                     <div class="step-circle">2</div>
+                    <span>Booking details</span>
                 </div>
                 <div class="step-line"></div>
                 <div class="step" id="stepIndicator3">
                     <div class="step-circle">3</div>
+                    <span>Terms & Conditions</span>
                 </div>
             </div>
 
@@ -125,6 +125,10 @@
                             Booking deposit and payment: the client shall make a booking fee as per contract to retain the studio to perform the services specified in the contract.
                         </p>
                     </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="agreeTermsWedding" name="agreeTerms" required>
+                        <label for="agreeTermsWedding">I agree to the Terms & Conditions</label>
+                    </div>
                 </div>
 
                 <div class="form-navigation">
@@ -143,7 +147,16 @@
             </div>
         </div>
     </div>
-    
-    <script src="booking modal.js"></script>
+
+    <div class="floating-actions">
+        <button class="floating-theme-btn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script src="../main.js"></script>
 </body>
 </html>
