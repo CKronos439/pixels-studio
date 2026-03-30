@@ -15,8 +15,6 @@
     <link rel="stylesheet" href="CSS/home.css">
     <link rel="stylesheet" href="CSS/modal.css">
     <link rel="stylesheet" href="CSS/animations.css">
-    <link rel="stylesheet" href="CSS/responsive.css">
-
 </head>
 <body>
     
@@ -98,7 +96,7 @@
                 
                 <div class="service-3d-card reveal-up" tabindex="0">
                     <div class="card-inner">
-                        <img src="Assets/kidz card.jpg" alt="Kidz Photoshoot">
+                        <img src="Assets/kidz card.jpg" alt="Kidz Photoshoot" loading="lazy">
                         <div class="card-overlay">
                             <h3>Kidz Photoshoot</h3>
                             <div class="service-hidden-content">
@@ -118,7 +116,7 @@
 
                 <div class="service-3d-card reveal-up delay-100" tabindex="0">
                     <div class="card-inner">
-                        <img src="Assets/photoshoot card.jpg" alt="Professional Session">
+                        <img src="Assets/photoshoot card.jpg" alt="Professional Session" loading="lazy">
                         <div class="card-overlay">
                             <h3>Professional Session</h3>
                             <div class="service-hidden-content">
@@ -138,7 +136,7 @@
 
                 <div class="service-3d-card reveal-up delay-200" tabindex="0">
                     <div class="card-inner">
-                        <img src="Assets/wedding card.jpg" alt="Weddings & Events">
+                        <img src="Assets/wedding card.jpg" alt="Weddings & Events" loading="lazy">
                         <div class="card-overlay">
                             <h3>Weddings & Events</h3>
                             <div class="service-hidden-content">
@@ -230,7 +228,7 @@
     <footer>
         <div class="row">
             <div class="column">
-                <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo">
+                <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo" loading="lazy">
                 <p>Capturing moments that matter. We turn fleeting seconds into lasting memories with a focus on natural light and genuine emotion. For inquiries regarding rates, availability, or to book a session, please use the contact form.</p>
             </div>
             <div class="column">
@@ -286,26 +284,40 @@
                 <div class="step" id="stepIndicator3"><div class="step-circle">3</div><span>Terms & Conditions</span></div>
             </div>
             <form id="bookingForm" onsubmit="event.preventDefault();">
+                <!-- Optional: Sets the subject line of the email you receive -->
+                <input type="hidden" name="_subject" value="New Booking Request - Pixels Studio">
+                
                 <div class="form-step active" id="step1">
-                    <div class="input-group"><label>Full Name</label><input type="text" placeholder="John Smith" required></div>
-                    <div class="input-group"><label>Phone Number</label><input type="tel" placeholder="+233 XX XXX XXXX" required></div>
-                    <div class="input-group"><label>Email Address</label><input type="email" placeholder="your@email.com" required></div>
+                    <div class="input-group"><label>Full Name</label><input type="text" name="fullName" placeholder="John Smith" required></div>
+                    <div class="input-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="+233 XX XXX XXXX" required></div>
+                    <div class="input-group"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
                 </div>
                 <div class="form-step" id="step2">
                     <div class="input-group">
                         <label>Service</label>
-                        <select id="serviceSelect">
+                        <select id="serviceSelect" name="serviceType">
                             <option value="photoshoot">Photoshoot</option>
                             <option value="wedding">Wedding Coverage</option>
                             <option value="kids">Kids Photography</option>
                             <option value="event">Other Event</option>
                         </select>
                     </div>
-                    <div class="input-group"><label>Booking Date & Time</label><input type="datetime-local" required></div>
-                    <div class="input-group"><label>Event Location</label><input type="text" placeholder="Enter location" required></div>
+                    <div class="input-group"><label>Booking Date & Time</label><input type="datetime-local" name="bookingDate" required></div>
+                    <div class="input-group"><label>Event Location</label><input type="text" name="location" placeholder="Enter location" required></div>
                 </div>
                 <div class="form-step" id="step3">
-                    <div class="terms-scroll-box"><p>All photographic materials, such as original negatives, photos, or slides, shall be the exclusive property of the photographer...</p></div>
+                    <div class="terms-scroll-box">
+                        <p>All photographic materials, such as original negatives, photos, or slides, shall be the exclusive property of the photographer. 
+                        The photographer shall own the copyright in all images created and may use the work for samples, contests, exhibition, advertising and self-promotion. 
+                        Usage outside the bounds of this agreement will require the client’s consent.
+                        </p>
+                        
+                        <br>
+                        <p>
+                            Booking deposit and payment: the client shall make a booking fee as per contract to retain the studio to perform the services specified in the contract.
+                        </p>
+                    </div>
+
                     <div class="checkbox-group">
                         <input type="checkbox" id="agreeTermsIndex" name="agreeTerms" required>
                         <label for="agreeTermsIndex">I agree to the Terms & Conditions</label>

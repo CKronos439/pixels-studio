@@ -262,7 +262,7 @@ footer {
     z-index: 20; 
     position: relative; 
     bottom: 0; 
-    background: linear-gradient(to right, #8a0a1b 0%, #0e0d0d 40%, #0e0d0d 100%) !important;
+    background: linear-gradient(to right, #3a0008 15%, #0e0d0d 60%, #0e0d0d 100%) !important;
     color: #fff; 
     padding: 50px 0 20px; 
     border-top-left-radius: 50px; 
@@ -657,7 +657,7 @@ body.light-theme .logo-light {
    ========================================= */
 
 body.light-theme footer {
-    background: linear-gradient(to right, #0e0d0d 0%, #0e0d0d 40%, #8a0a1b 100%) !important;
+    background: linear-gradient(to right, #0e0d0d 0%, #0e0d0d 40%, #3a0008 100%) !important;
     box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1) !important; 
 }
 

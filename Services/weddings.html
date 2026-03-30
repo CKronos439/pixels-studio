@@ -53,9 +53,9 @@
             <h3 class="projects-title">PROJECTS</h3>
             
             <div class="gallery-grid" id="gallery">
-                <div class="gallery-item"><img src="../Assets/wedding 1.jpg" alt="wedding"></div>
-                <div class="gallery-item"><img src="../Assets/wedding 2.jpg" alt="wedding"></div>
-                <div class="gallery-item"><img src="../Assets/wedding 3.jpg" alt="wedding"></div>
+                <div class="gallery-item"><img src="../Assets/wedding 1.jpg" alt="wedding" loading="lazy"></div>
+                <div class="gallery-item"><img src="../Assets/wedding 2.jpg" alt="wedding" loading="lazy"></div>
+                <div class="gallery-item"><img src="../Assets/wedding 3.jpg" alt="wedding" loading="lazy"></div>
             </div>
             <a href="#gallery" class="see-more-btn">See More</a>
         </div>
@@ -93,26 +93,28 @@
             </div>
 
             <form id="bookingForm" onsubmit="event.preventDefault();">
+                <!-- Sets the subject line of the email you receive -->
+                <input type="hidden" name="_subject" value="New Wedding Booking - Pixels Studio">
                 
                 <div class="form-step active" id="step1">
                     <div class="input-group">
                         <label>Full Name</label>
-                        <input type="text" placeholder="John Smith" required>
+                        <input type="text" name="fullName" placeholder="John Smith" required>
                     </div>
                     <div class="input-group">
                         <label>Phone Number</label>
-                        <input type="tel" placeholder="+233 XX XXX XXXX" required>
+                        <input type="tel" name="phone" placeholder="+233 XX XXX XXXX" required>
                     </div>
                     <div class="input-group">
                         <label>Email Address</label>
-                        <input type="email" placeholder="your@email.com" required>
+                        <input type="email" name="email" placeholder="your@email.com" required>
                     </div>
                 </div>
 
                 <div class="form-step" id="step2">
                     <div class="input-group">
                         <label>Service</label>
-                        <select id="serviceSelect">
+                        <select id="serviceSelect" name="serviceType">
                             <option value="photoshoot">Photoshoot</option>
                             <option value="wedding">Wedding Coverage</option>
                             <option value="kids">Kids Photography</option>
@@ -121,11 +123,11 @@
                     </div>
                     <div class="input-group">
                         <label>Date & Time</label>
-                        <input type="datetime-local" required>
+                        <input type="datetime-local" name="bookingDate" required>
                     </div>
                     <div class="input-group">
                         <label>Location</label>
-                        <input type="text" placeholder="Accra, Ghana" required>
+                        <input type="text" name="location" placeholder="Accra, Ghana" required>
                     </div>
                 </div>
 

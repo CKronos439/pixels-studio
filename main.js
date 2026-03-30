@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
     /* =========================================
        4. SCROLL REVEAL ENGINE
        ========================================= */
-    const revealElements = document.querySelectorAll('.scroll-reveal, .gallery-item'); // Find all elements on the page that we want to animate in when scrolled into view
+    const revealElements = document.querySelectorAll('.scroll-reveal, .reveal-up, .gallery-item'); // Find all elements on the page that we want to animate in when scrolled into view
     
     const observer = new IntersectionObserver((entries) => { // Create a new IntersectionObserver, a built-in browser tool that watches when elements enter the screen
         entries.forEach(entry => { // Loop through all the elements the observer is currently watching
@@ -221,9 +221,12 @@ window.BookingApp = { // Create a globally accessible object to store all functi
             const formData = form ? new FormData(form) : new FormData(); // Extract all user inputs from the form into a FormData object
             const data = Object.fromEntries(formData.entries()); // Convert the FormData object into a standard JSON object
 
-            const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', { // Pause execution to send the data to Formspree
+            const response = await fetch('https://formspree.io/f/xpqopjrw', { // Pause execution to send the data to Formspree
                 method: 'POST', // Declare this as a POST request (sending data)
-                headers: { 'Content-Type': 'application/json' }, // Tell the server we are sending JSON data
+                headers: { 
+                    'Content-Type': 'application/json', // Tell the server we are sending JSON data
+                    'Accept': 'application/json' // Ask the server to respond with JSON instead of an HTML redirect
+                },
                 body: JSON.stringify(data) // Convert our JSON object into a raw text string for transmission
             }); // End of fetch request
 
