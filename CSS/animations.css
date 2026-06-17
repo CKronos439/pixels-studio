@@ -31,8 +31,8 @@
     }
 }
 
-.brand-huge, 
-.hero-intro, 
+.brand-huge,
+.hero-intro,
 .hero-subtext, 
 .button-group,
 .about-hero h1,
@@ -112,4 +112,14 @@ body {
 
 body.fade-out {
     opacity: 0;
+}
+
+/* Mobile reduction for slide animations to prevent horizontal overflow */
+@media (max-width: 768px) {
+    .scroll-reveal.reveal-left {
+        transform: translateX(-50px);
+    }
+    .scroll-reveal.reveal-right {
+        transform: translateX(50px);
+    }
 }

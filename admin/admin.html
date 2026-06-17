@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+    <title>Pixels Studio Admin</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    
+    <!-- Icons & Charts -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Styles & Scripts -->
+    <link rel="stylesheet" href="admin-styles.css">
+    <link rel="stylesheet" href="admin-animations.css">
+    <script src="admin-script.js" defer></script>
+</head>
+<body>
+    <!-- Main Application Wrapper -->
+    <div class="app-container">
+        
+        <!-- Desktop & Tablet Side Navigation Menu -->
+        <aside class="sidebar" id="sidebar">
+            
+            <!-- Sidebar Logo and Toggle Button -->
+            <div class="sidebar-header">
+                <!-- BACKEND: Replace with dynamic studio logo or initials -->
+                <div class="logo">PS</div>
+                <!-- BACKEND: Replace with dynamic studio name -->
+                <span class="nav-label studio-name">Pixels Studio</span>
+                <!-- Sidebar Expand/Collapse Toggle Button -->
+                <button class="toggle-btn" id="sidebar-toggle" aria-label="Toggle Sidebar">
+                    <i data-lucide="menu"></i>
+                </button>
+            </div>
+            
+            <!-- Internal view links driven by data-target javascript intercept -->
+            <nav class="nav-links">
+                <!-- Dashboard Nav Link -->
+                <a href="#" class="nav-item active" data-target="dashboard">
+                    <i data-lucide="layout-dashboard"></i><span class="nav-label">Dashboard</span>
+                </a>
+                <!-- Calendar Nav Link -->
+                <a href="#" class="nav-item" data-target="calendar">
+                    <i data-lucide="calendar"></i><span class="nav-label">Calendar</span>
+                </a>
+                <!-- Clients Database Nav Link -->
+                <a href="#" class="nav-item" data-target="users">
+                    <i data-lucide="users"></i><span class="nav-label">Clients</span>
+                </a>
+                <!-- Albums/Gallery Nav Link -->
+                <a href="#" class="nav-item" data-target="image">
+                    <i data-lucide="image"></i><span class="nav-label">Albums</span>
+                </a>
+                <!-- Notifications Nav Link -->
+                <a href="#" class="nav-item" data-target="bell">
+                    <div class="bell-icon unread"><i data-lucide="bell"></i></div>
+                    <span class="nav-label">Notifications</span>
+                </a>
+                <!-- Settings Nav Link -->
+                <a href="#" class="nav-item" data-target="settings">
+                    <i data-lucide="settings"></i><span class="nav-label">Settings</span>
+                </a>
+            </nav>
+            
+            <!-- Bottom Area of Sidebar (Profile/Logout) -->
+            <div class="sidebar-footer">
+                <!-- BACKEND: Replace avatar and name with actual logged-in user data -->
+                <div class="avatar admin-avatar">A</div>
+                <span class="nav-label">Admin</span>
+                <button class="logout-btn" aria-label="Logout"><i data-lucide="log-out"></i></button>
+            </div>
+        </aside>
+
+        <!-- Mobile Bottom Tab Bar Navigation (Hidden > 768px viewports) -->
+        <div class="mobile-tab-bar">
+            <a href="#" class="tab-item active" data-target="dashboard"><i data-lucide="layout-dashboard"></i></a>
+            <a href="#" class="tab-item" data-target="calendar"><i data-lucide="calendar"></i></a>
+            <a href="#" class="tab-item" data-target="users"><i data-lucide="users"></i></a>
+            <a href="#" class="tab-item" data-target="bell"><div class="bell-icon unread"><i data-lucide="bell"></i></div></a>
+            <a href="#" class="tab-item" data-target="settings"><i data-lucide="settings"></i></a>
+        </div>
+
+        <!-- Main Dynamic Content Wrapper -->
+        <main class="main-content">
+            
+            <!-- 1. DASHBOARD VIEW -->
+            <section id="dashboard" class="section active">
+                <!-- Page Header & Greeting -->
+                <header class="section-header">
+                    <h1 id="greeting">Good morning, Admin</h1>
+                    <!-- BACKEND: Date and time are currently handled by JS, but can be synced to server time -->
+                    <p class="current-date" id="current-date"></p>
+                </header>
+                
+                <!-- Top Highlight Statistics -->
+                <div class="stats-grid">
+                    <!-- BACKEND: Replace these hardcoded <h2> stat numbers with live database metrics -->
+                    <div class="stat-card"><p>Total Bookings</p><h2 class="stat-number">142</h2></div>
+                    <div class="stat-card"><p>Website Visitors</p><h2 class="stat-number">2,845</h2></div>
+                    <div class="stat-card"><p>Pending Requests</p><h2 class="stat-number">8</h2></div>
+                    <div class="stat-card"><p>Galleries Delivered</p><h2 class="stat-number">34</h2></div>
+                </div>
+                
+                <!-- Analytics Container -->
+                <div class="dashboard-columns">
+                    <!-- Inbox Mini-Feed & Donut Chart -->
+                    <div class="panel">
+                        <h3>Recent Inbox Messages</h3>
+                        <!-- JS executes innerHTML list map here -->
+                        <div id="recent-messages-list" class="list-container"></div>
+                        <button class="btn btn-outline widget-link" data-target="bell" style="width: 100%; margin-top: 10px; justify-content: center;">View All Messages</button>
+                        <div class="chart-container"><canvas id="donutChart"></canvas></div>
+                    </div>
+                    <!-- Booking Inquiries Bar Chart -->
+                    <div class="panel">
+                        <h3>Booking Inquiries</h3>
+                        <div class="chart-container"><canvas id="barChart"></canvas></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. CALENDAR VIEW -->
+            <section id="calendar" class="section">
+                <!-- Page Header -->
+                <header class="section-header">
+                    <h1>Calendar & Bookings</h1>
+                    <button class="btn" id="new-booking-btn"><i data-lucide="plus"></i> New Booking</button>
+                </header>
+                <div class="calendar-layout">
+                    <!-- Core 7 column generated calendar -->
+                    <div class="calendar-main panel">
+                        <!-- Month Navigation -->
+                        <div class="calendar-header">
+                            <button id="prev-month"><i data-lucide="chevron-left"></i></button>
+                            <h3 id="calendar-month">October 2025</h3>
+                            <button id="next-month"><i data-lucide="chevron-right"></i></button>
+                        </div>
+                        <div class="calendar-grid" id="calendar-grid"></div>
+                    </div>
+                    <!-- Daily Schedule Feed -->
+                    <div class="calendar-sidebar panel">
+                        <h3 id="schedule-title">Schedule</h3>
+                        <div id="schedule-list" class="list-container"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. CLIENTS DATABASE VIEW -->
+            <section id="users" class="section">
+                <!-- Page Header -->
+                <header class="section-header"><h1>Client Database</h1></header>
+                
+                <!-- Filters and Search Bar -->
+                <div class="controls-bar">
+                    <div class="search-box"><i data-lucide="search"></i><input type="text" id="client-search" placeholder="Search clients..."></div>
+                    <!-- BACKEND: Populate this <select> with unique client tags/types from the database -->
+                    <select class="custom-select">
+                        <option>All Types</option>
+                        <option>Kidz Photoshoot</option>
+                        <option>Photoshoots</option>
+                        <option>Weddings and Events</option>
+                    </select>
+                </div>
+                <!-- Data Table Container -->
+                <div class="table-container panel"><table id="clients-table"></table></div>
+            </section>
+
+            <!-- 4. ALBUMS HOSTING VIEW -->
+            <section id="image" class="section">
+                <!-- Page Header -->
+                <header class="section-header">
+                    <h1>Client Albums</h1>
+                    <button class="btn" id="toggle-upload-btn"><i data-lucide="upload-cloud"></i> Upload Images</button>
+                </header>
+                
+                <!-- Collapsible upload environment -->
+                <div class="upload-container hidden" id="upload-container">
+                    <!-- BACKEND: Populate this <select> with active client albums from the database -->
+                    <select class="custom-select form-field"><option>Select Album to Upload To...</option></select>
+                    <div class="upload-zone" id="upload-zone">
+                        <i data-lucide="cloud-upload"></i>
+                        <p>Drag and drop images here, or <span class="gold-text">click to browse</span></p>
+                        <input type="file" id="file-input" accept="image/jpeg, image/png, image/webp" multiple hidden>
+                    </div>
+                    <div class="upload-preview" id="upload-preview"></div>
+                </div>
+                
+                <!-- Filter Tabs for Galleries -->
+                <div class="tabs pipeline-tabs">
+                    <button class="tab-btn active">Uploaded</button><button class="tab-btn">Edited</button>
+                </div>
+                <!-- Masonry Gallery Grid -->
+                <div class="gallery-grid" id="gallery-grid"></div>
+            </section>
+
+            <!-- 5. INBOX VIEW -->
+            <section id="bell" class="section">
+                <!-- Page Header -->
+                <header class="section-header">
+                    <h1>Notifications</h1>
+                    <button class="btn btn-outline" id="mark-read-btn">Mark All Read</button>
+                </header>
+                <!-- Inbox Sorting Tabs -->
+                <div class="tabs"><button class="tab-btn active">All</button><button class="tab-btn">Requests</button></div>
+                <!-- Inbox List Container -->
+                <div class="notification-list panel" id="notification-list"></div>
+            </section>
+
+            <!-- 6. SETTINGS VIEW -->
+            <section id="settings" class="section">
+                <!-- Page Header -->
+                <header class="section-header"><h1>Studio Settings</h1></header>
+                <div class="panel form-panel">
+                    <h3>Preferences</h3>
+                    <!-- BACKEND: Connect these UI toggles to user preference booleans in the DB -->
+                    <div class="toggle-row"><span>Email Notifications</span><div class="toggle-switch active"></div></div>
+                    <div class="toggle-row"><span>SMS Alerts</span><div class="toggle-switch"></div></div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+    
+    <!-- Modals & Context Overlays -->
+    <!-- Full-screen booking creation modal overlay -->
+    <div id="booking-modal" class="modal-overlay">
+        <div class="modal-card">
+            <!-- Modal Header -->
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 20px;">
+                <h3>Add New Booking</h3>
+                <button class="close-btn close-modal"><i data-lucide="x"></i></button>
+            </div>
+            <!-- Modal Input Form -->
+            <form id="new-booking-form">
+                <!-- BACKEND: This form should POST to the booking creation API -->
+                <input type="text" id="b-name" class="form-field" placeholder="Client / Event Name" required>
+                <input type="email" id="b-email" class="form-field" placeholder="Client Email" required>
+                <input type="tel" id="b-phone" class="form-field" placeholder="Client Phone Number" required>
+                <input type="date" id="b-date" class="form-field" required>
+                <select id="b-type" class="form-field custom-select" required style="width: 100%;">
+                    <option value="Kidz Photoshoot">Kidz Photoshoot</option>
+                    <option value="Photoshoots">Photoshoots</option>
+                    <option value="Weddings and Events">Weddings and Events</option>
+                    <option value="Other">Other</option>
+                </select>
+                <input type="text" id="b-type-other" class="form-field" placeholder="Specify Event Type" style="display: none; width: 100%;">
+                <button type="submit" class="btn" style="width: 100%; margin-top: 10px;">Save Booking</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Dynamic pop-up toast notification anchor -->
+    <div id="toast-container" class="toast-container"></div>
+</body>
+</html>

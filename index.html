@@ -58,7 +58,7 @@
             <div class="hero-content">
                 <div class="hero-text fade-in">
                     <p class="hero-intro">Hi! We are</p>
-                    <h1 class="brand-huge">Pixels Studio</h1>
+                    <h1 class="brand-huge"><span class="typewriter-text">Pixels Studio</span></h1>
                     <p class="hero-subtext">We look forward to working with you at the upcoming photo shoot or event. We want to capture beautiful images that will provide you with precious memories for years to come.</p>
                     <div class="button-group">
                         <a href="#services" class="btn btn-primary">View Projects</a>
@@ -90,7 +90,7 @@
     ========================================== -->
     <section id="services" class="home-services">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Our Expertise</h2>
+            <h2 class="section-title">Our Expertise</h2>
             
             <div class="services-3d-grid">
                 
@@ -164,7 +164,7 @@
     ========================================== -->
     <section id="contact" class="home-contact">
         <div class="container">
-            <h2 class="section-title" style="color: white;">Contact Us</h2>
+            <h2 class="section-title">Contact Us</h2>
 
             <div class="contact-grid">
                 <div class="contact-info-card reveal-up">
@@ -265,7 +265,7 @@
             </div>
         </div>
         <hr>
-        <p class="copyright">&copy; Pixels Studio 2025 - All Rights Reserved</p>
+        <p class="copyright">&copy; Pixels Studio <span id="current-year">2025</span> - All Rights Reserved</p>
     </footer>
     <!-- /FOOTER END -->
 
@@ -287,6 +287,9 @@
                 <!-- Optional: Sets the subject line of the email you receive -->
                 <input type="hidden" name="_subject" value="New Booking Request - Pixels Studio">
                 
+                <!-- Anti-Spam Honeypot Field -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
                 <div class="form-step active" id="step1">
                     <div class="input-group"><label>Full Name</label><input type="text" name="fullName" placeholder="John Smith" required></div>
                     <div class="input-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="+233 XX XXX XXXX" required></div>

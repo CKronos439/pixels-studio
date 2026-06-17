@@ -12,10 +12,8 @@
     
     <!-- Preload Critical Hero Image -->
     <link rel="preload" href="Assets/camera.jpeg" as="image">
-
     <link rel="stylesheet" href="CSS/global.css">
     <link rel="stylesheet" href="CSS/about.css">
-    <link rel="stylesheet" href="CSS/responsive.css">
     <link rel="stylesheet" href="CSS/animations.css">
 </head>
 <body>
@@ -112,7 +110,7 @@
     <footer>
         <div class="row">
             <div class="column">
-                <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo">
+                <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo" loading="lazy">
                 <p>Capturing moments that matter. We turn fleeting seconds into lasting memories with a focus on natural light and genuine emotion. For inquiries regarding rates, availability, or to book a session, please use the contact form.</p>
             </div>
             <div class="column">
@@ -129,9 +127,9 @@
                 <h3 class="footer-head">Links</h3>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#services">Services</a></li>
+                    <li><a href="index.html#services">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </div>
             <div class="column">
@@ -149,7 +147,7 @@
             </div>
         </div>
         <hr>
-        <p class="copyright">&copy; Pixels Studio 2025 - All Rights Reserved</p>
+        <p class="copyright">&copy; Pixels Studio <span id="current-year">2025</span> - All Rights Reserved</p>
     </footer>
     <!-- /FOOTER END -->
 

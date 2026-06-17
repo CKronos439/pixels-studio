@@ -2,10 +2,6 @@
    HOME PAGE STYLES
    ========================================= */
 
-body {
-    background-color: #111;
-}
-
 /* =========================================
    HERO SECTION
    ========================================= */
@@ -16,18 +12,40 @@ body {
     align-items: center; 
     justify-content: center; 
     padding-top: 180px;
-    background: linear-gradient(rgba(18, 18, 18, 0.75), rgba(18, 18, 18, 0.75)), url('../Assets/background.jpeg') no-repeat center center/cover; 
+    background: url('../Assets/background.jpeg') no-repeat center center/cover; 
     background-attachment: fixed; 
-    transition: background 0.5s ease;
+    position: relative;
+    z-index: 1;
 }
 
-/* Mobile Architecture Override: Disables fixed attachment to correct portrait viewport scaling */
+/* Mobile Hero Adjustments */
 @media (max-width: 768px) {
     .hero {
         background-attachment: scroll !important;
         min-height: 100dvh;
         background-position: center top !important;
     }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 18, 18, 0.75);
+    z-index: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.7);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 @keyframes smoothFloat { 
@@ -49,6 +67,8 @@ body {
     text-align: center; 
     width: 100%; 
     animation: smoothFloat 6s ease-in-out infinite; 
+    position: relative;
+    z-index: 2;
 }
 
 .hero-text {
@@ -56,20 +76,10 @@ body {
     flex-direction: column;
     align-items: center;
     width: 100%;
-    opacity: 0;
-    transform: translateY(30px);
-    animation: heroLoad 1s cubic-bezier(0.25, 1, 0.5, 1) 0.2s forwards;
-}
-
-@keyframes heroLoad {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
 }
 
 .hero-intro {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     color: var(--primary);
     font-weight: 600;
     margin-bottom: 0;
@@ -79,7 +89,7 @@ body {
 
 .brand-huge {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(3.5rem, 12vw, 12rem);
+    font-size: clamp(4.5rem, 14vw, 14rem);
     line-height: 1;
     margin-bottom: 1.5rem;
     color: #ffffff;
@@ -87,6 +97,33 @@ body {
     letter-spacing: -1px;
     text-align: center;
     transition: color 0.5s ease;
+    
+    /* Typewriter effect container */
+    display: block; /* Ensure h1 is a block to center properly */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.typewriter-text {
+    overflow: hidden; /* Hides text outside its current width */
+    white-space: nowrap; /* Prevents text from wrapping */
+    display: inline-block; /* Allows width animation */
+    vertical-align: middle; /* Align with text */
+    color: inherit; /* Fixes dim text caused by global span styling */
+    width: 0; /* Ensures it stays hidden during the initial 1.2s delay */
+    border-right: 0.1em solid transparent;
+    /* Animation: typing (duration) steps(characters, end) forwards (delay), blink-caret (duration) step-end (iterations) */
+    animation: typing 2.5s steps(13, end) forwards 0.5s, blink-caret 0.75s step-end 5;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: var(--primary); }
 }
 
 .hero-subtext {
@@ -127,11 +164,14 @@ body {
     margin-left: 0;
 }
 
-.hero .btn-outline:hover,
-.hero .btn-outline:active {
+.hero .btn-outline:hover {
     background: white;
     color: var(--dark);
-    transform: translateY(-3px) scale(0.98);
+    transform: translateY(-3px);
+}
+
+.hero .btn-outline:active {
+    transform: scale(0.95);
 }
 
 /* =========================================
@@ -143,7 +183,22 @@ body {
     background-color: #0a0a0a;
     scroll-margin-top: 90px;
     transition: background-color 0.5s ease;
+    position: relative;
+    z-index: 2;
 }
+
+/* Top Gradient Transition */
+.home-about::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, #0a0a0a 0%, rgba(10, 10, 10, 0) 100%);
+    pointer-events: none;
+}
+
 
 .perspective-container {
     perspective: 1000px;
@@ -155,19 +210,37 @@ body {
     background: linear-gradient(145deg, #1a1a1a, #111);
     padding: clamp(30px, 5vw, 60px);
     border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     text-align: center;
     width: 100%;
     max-width: 800px;
     color: white;
-    box-shadow: 0 30px 60px rgba(0,0,0,0.7);
-    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), background 0.5s ease, box-shadow 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+    box-shadow: 0 35px 70px rgba(0,0,0,0.95);
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease, color 0.5s ease, border-color 0.5s ease;
     transform-style: preserve-3d;
+    position: relative;
+}
+
+.about-3d-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.about-3d-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border-radius: inherit;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .about-3d-card:hover {
     transform: translateY(-10px) rotateX(2deg) rotateY(-2deg);
-    box-shadow: 0 40px 80px rgba(138, 10, 27, 0.25);
+    box-shadow: 0 45px 90px rgba(138, 10, 27, 0.5);
 }
 
 .about-3d-card h2 {
@@ -199,11 +272,14 @@ body {
     margin-left: 0;
 }
 
-.about-3d-card .btn-outline:hover,
-.about-3d-card .btn-outline:active {
+.about-3d-card .btn-outline:hover {
     background: white;
     color: var(--dark);
-    transform: translateZ(20px) scale(0.98);
+    transform: translateZ(20px) translateY(-3px);
+}
+
+.about-3d-card .btn-outline:active {
+    transform: scale(0.95);
 }
 
 /* =========================================
@@ -241,21 +317,23 @@ body {
     transform-style: preserve-3d;
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: transform, box-shadow;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.85);
 }
+
 
 .service-3d-card:hover .card-inner,
 .service-3d-card:focus .card-inner,
 .service-3d-card:focus-within .card-inner,
 .service-3d-card.active-touch .card-inner {
     transform: rotateX(5deg) rotateY(-5deg) scale3d(1.03, 1.03, 1.03);
-    box-shadow: -20px 30px 50px rgba(0,0,0,0.6);
+    box-shadow: -20px 35px 60px rgba(0,0,0,0.98);
 }
 
 .card-inner img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transform: scale(1.1);
     transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), filter 0.8s ease;
     will-change: transform, filter;
 }
@@ -278,6 +356,23 @@ body {
     transform: translateZ(50px);
     color: white;
     transition: all 0.6s ease;
+    z-index: 1;
+}
+
+.card-overlay > * {
+    position: relative;
+    z-index: 2;
+}
+
+.card-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.85) 60%, transparent 100%);
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .card-overlay h3 {
@@ -361,14 +456,19 @@ body {
     font-size: 0.85rem;
     letter-spacing: 1px;
     border-color: rgba(255, 255, 255, 0.4);
+    color: #ffffff;
     transition: all 0.3s ease;
 }
 
-.view-port-btn:hover,
-.view-port-btn:active {
+.view-port-btn:hover {
     border-color: var(--primary);
     background: var(--primary);
-    transform: scale(0.98);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(138, 10, 27, 0.4);
+}
+
+.view-port-btn:active {
+    transform: scale(0.95);
 }
 
 /* =========================================
@@ -383,7 +483,10 @@ body {
     align-items: center;
     scroll-margin-top: 90px;
     transition: background-color 0.5s ease;
+    position: relative;
+    z-index: 4;
 }
+
 
 .contact-grid {
     display: grid;
@@ -399,7 +502,7 @@ body {
 
 .card-title {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     color: white;
     margin-bottom: 15px;
     transition: color 0.5s ease;
@@ -421,19 +524,22 @@ body {
     padding: 20px;
     border-radius: 12px;
     background: rgba(255, 255, 255, 0.03);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
     transition: all 0.3s ease;
     color: white;
     text-decoration: none;
     border-left: 4px solid transparent;
 }
 
-.detail-item.clickable:hover,
-.detail-item.clickable:active {
-    transform: translateY(-5px) scale(0.98);
+.detail-item.clickable:hover {
+    transform: translateY(-5px);
     background: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    box-shadow: 0 10px 25px rgba(138, 10, 27, 0.4);
     border-left: 4px solid var(--primary);
+}
+
+.detail-item.clickable:active {
+    transform: scale(0.98);
 }
 
 .detail-item i {
@@ -449,6 +555,7 @@ body {
     margin-bottom: 5px;
     color: white;
     font-weight: 700;
+    transition: color 0.5s ease;
 }
 
 body.light-theme .detail-item.clickable:hover {
@@ -464,7 +571,7 @@ body.light-theme .detail-item span,
 body.light-theme .contact-intro,
 body.light-theme .booking-cta-card p,
 body.light-theme .about-3d-card p {
-    color: #555555;
+    color: #444444;
 }
 .detail-item span {
     font-family: 'Proza Libre', sans-serif;
@@ -478,11 +585,29 @@ body.light-theme .about-3d-card p {
     padding: 50px;
     border-radius: 20px;
     text-align: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+    border: 1px solid rgba(255, 255, 255, 0.15);
     position: sticky;
     top: 120px;
-    transition: background 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+    transition: box-shadow 0.5s ease, border-color 0.5s ease;
+    z-index: 1;
+}
+
+.booking-cta-card > * {
+    position: relative;
+    z-index: 2;
+}
+
+.booking-cta-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    border-radius: inherit;
+    opacity: 0;
+    z-index: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
 }
 
 .booking-cta-card h3 {
@@ -501,6 +626,12 @@ body.light-theme .about-3d-card p {
     transition: color 0.5s ease;
 }
 
+@keyframes btnPulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
 .big-book-btn {
     padding: 18px 40px;
     font-size: 1.1rem;
@@ -516,41 +647,62 @@ body.light-theme .about-3d-card p {
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 5px 15px rgba(138, 10, 27, 0.3);
+    animation: btnPulse 2.5s ease-in-out infinite;
 }
 
-.big-book-btn:hover,
-.big-book-btn:active {
+.big-book-btn:hover {
     background-color: var(--primary-dark);
-    transform: translateY(-3px) scale(0.98);
     box-shadow: 0 10px 25px rgba(138, 10, 27, 0.5);
 }
 
-/* Home Contact Grid Mobile Responsiveness */
+.big-book-btn:active {
+    transform: scale(0.95);
+}
+
+.big-book-btn:active {
+    transform: scale(0.95);
+}
+
+/* Mobile Responsive Contact Section */
 @media (max-width: 768px) {
     .contact-grid {
         grid-template-columns: 1fr;
     }
+    .contact-info-card {
+        padding-right: 0;
+    }
     .booking-cta-card {
-        position: static;
+        position: relative;
+        top: 0;
         padding: 40px 20px;
     }
+
 }
 
 @media (max-width: 480px) {
     .hero-intro {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
     .brand-huge {
         font-size: clamp(3.8rem, 15vw, 6rem);
+    }
+    .typewriter-text {
+        white-space: normal; /* Allow text to wrap on mobile */
+        animation: none; /* Disable typewriter effect on mobile */
+        width: auto;
+        display: inline;
+        border: none; /* Remove cursor */
     }
     .hero-subtext {
         font-size: 0.85rem;
     }
     .about-3d-card h2,
     .card-overlay h3,
-    .card-title,
     .booking-cta-card h3 {
         font-size: 2rem;
+    }
+    .card-title {
+        font-size: 1.5rem;
     }
     .about-3d-card p,
     .service-desc,
@@ -570,124 +722,167 @@ body.light-theme .about-3d-card p {
         padding: 15px;
         font-size: 0.9rem;
     }
+    .home-about::before {
+        height: 80px;
+    }
 }
 
 /* =========================================
    HOME PAGE LIGHT MODE (NO CONTACT STYLES)
    ========================================= */
 
-body.light-theme .hero {
-    background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('../Assets/background.jpeg') no-repeat center center/cover !important;
+body.light-theme .hero .btn-outline,
+body.light-theme .about-3d-card .btn-outline {
+    border-color: #111111;
+    color: #111111;
 }
+
+body.light-theme .hero .btn-outline:hover,
+body.light-theme .hero .btn-outline:active,
+body.light-theme .about-3d-card .btn-outline:hover,
+body.light-theme .about-3d-card .btn-outline:active {
+    background: #111111;
+    color: #ffffff;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+body.light-theme .hero::before {
+    opacity: 1;
+}
+
+body.light-theme .hero::after {
+    opacity: 0;
+}
+
 body.light-theme .brand-huge,
 body.light-theme .hero-subtext {
-    color: #111111 !important;
+    color: #111111;
 }
 
 body.light-theme .home-about {
-    background-color: #f8f9fa !important;
+    background-color: #f8f9fa;
+}
+body.light-theme .home-about::before {
+    background: linear-gradient(to top, #f8f9fa 0%, rgba(248, 249, 250, 0) 100%);
+}
+body.light-theme .about-3d-card::before {
+    opacity: 1;
 }
 body.light-theme .about-3d-card {
-    background: linear-gradient(145deg, #ffffff, #f0f0f0) !important;
-    border: 1px solid rgba(0, 0, 0, 0.04) !important;
-    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.1) !important;
-    color: #111111 !important;
+    border-color: transparent;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    color: #111111;
 }
 body.light-theme .about-3d-card:hover {
-    box-shadow: 0 40px 60px rgba(0, 0, 0, 0.18) !important;
+    box-shadow: 0 40px 70px rgba(0, 0, 0, 0.16);
 }
 body.light-theme .about-3d-card p {
-    color: #555555 !important;
+    color: #444444;
 }
 
 body.light-theme .home-services {
-    background-color: #faf8f5 !important; 
-    background-image: var(--noise-texture) !important;
+    background-color: #ffffff;
+}
+
+body.light-theme .card-overlay::before {
+    opacity: 1;
 }
 body.light-theme .card-overlay {
-    background: linear-gradient(to top, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.85) 60%, transparent 100%) !important;
-    color: #111111 !important;
+    color: #111111;
 }
 body.light-theme .card-overlay h3 {
-    color: #111111 !important;
+    color: #111111;
 }
 body.light-theme .service-3d-card:hover .card-overlay h3,
 body.light-theme .service-3d-card.active-touch .card-overlay h3 {
-    color: #8a0a1b !important; 
+    color: #8a0a1b; 
 }
 body.light-theme .service-desc {
-    color: #555555 !important;
+    color: #444444;
+}
+
+body.light-theme .card-inner {
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+body.light-theme .service-3d-card:hover .card-inner,
+body.light-theme .service-3d-card:focus .card-inner,
+body.light-theme .service-3d-card:focus-within .card-inner,
+body.light-theme .service-3d-card.active-touch .card-inner {
+    box-shadow: -20px 35px 60px rgba(0,0,0,0.18);
 }
 body.light-theme .service-features li {
-    color: #333333 !important;
+    color: #333333;
 }
 body.light-theme .view-port-btn {
-    border-color: #111111 !important;
-    color: #111111 !important;
+    border-color: #8a0a1b;
+    color: #8a0a1b;
+    background: rgba(138, 10, 27, 0.04);
 }
 body.light-theme .view-port-btn:hover {
-    background: #8a0a1b !important;
-    border-color: #8a0a1b !important;
-    color: #ffffff !important;
+    background: #8a0a1b;
+    border-color: #8a0a1b;
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(138, 10, 27, 0.25);
 }
 
 
 
 /* =========================================
-   CONTACT PAGE LIGHT THEME OVERRIDES
+   HOME CONTACT SECTION: LIGHT THEME OVERRIDES
    ========================================= */
 
-body.light-theme .contact-hub,
 body.light-theme .home-contact {
-    background-color: #f8f9fa !important;
+    background-color: #f8f9fa;
 }
 
 body.light-theme .contact-intro {
-    color: var(--gray) !important; 
+    color: var(--gray); 
 }
 
 body.light-theme .detail-item {
-    background: white !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
-    color: var(--dark) !important;
-    border-left: 4px solid transparent !important;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    color: var(--dark);
+    border-left: 4px solid transparent;
 }
 
 body.light-theme .detail-item.clickable:hover {
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
-    border-left: 4px solid var(--primary) !important;
-    background: white !important;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-left: 4px solid var(--primary);
+    background: white;
 }
 
 body.light-theme .detail-item h4 {
-    color: var(--dark) !important;
+    color: var(--dark);
 }
 
 body.light-theme .detail-item span {
-    color: var(--gray) !important;
+    color: var(--gray);
 }
 
+body.light-theme .booking-cta-card::before {
+    opacity: 1;
+}
 body.light-theme .booking-cta-card {
-    background: white !important;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important;
-    border: 1px solid rgba(0,0,0,0.05) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    border-color: transparent;
 }
 
 body.light-theme .booking-cta-card h3 {
-    color: var(--primary) !important;
+    color: var(--primary);
 }
 
 body.light-theme .booking-cta-card p {
-    color: var(--gray) !important;
+    color: var(--gray);
 }
 
 body.light-theme .big-book-btn {
-    background-color: var(--primary) !important;
-    color: white !important;
-    box-shadow: 0 5px 15px rgba(138, 10, 27, 0.3) !important;
+    background-color: var(--primary);
+    color: white;
+    box-shadow: 0 5px 15px rgba(138, 10, 27, 0.15);
 }
 
 body.light-theme .big-book-btn:hover {
-    background-color: var(--primary-dark) !important;
-    box-shadow: 0 10px 25px rgba(138, 10, 27, 0.4) !important;
+    background-color: var(--primary-dark);
+    box-shadow: 0 10px 25px rgba(138, 10, 27, 0.25);
 }

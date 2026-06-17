@@ -33,12 +33,45 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
     const scrollTopBtn = document.getElementById('scrollTopBtn'); // Find the floating 'scroll to top' button
     const floatingThemeBtns = document.querySelectorAll('.floating-theme-btn'); // Find all floating theme toggle buttons
 
+    let isScrolling = false;
+    let lastScrollY = window.scrollY; // Track previous scroll position
     window.addEventListener('scroll', () => { // Listen for any scrolling movement on the entire browser window
-        if (header) window.scrollY > 50 ? header.classList.add('scrolled') : header.classList.remove('scrolled'); // If scrolled down more than 50 pixels, add the 'scrolled' class to shrink the header
-        
-        const isScrolled = window.scrollY > 300; // Create a variable that is true if the user has scrolled down more than 300 pixels
-        if (scrollTopBtn) isScrolled ? scrollTopBtn.classList.add('show') : scrollTopBtn.classList.remove('show'); // Show the 'scroll to top' button if scrolled far down, otherwise hide it
-        floatingThemeBtns.forEach(btn => isScrolled ? btn.classList.add('show') : btn.classList.remove('show')); // Loop through floating theme buttons and show/hide them based on the same scroll depth
+        if (!isScrolling) {
+            window.requestAnimationFrame(() => {
+                const currentScrollY = Math.max(0, window.scrollY); // Get current scroll position (Math.max prevents negative values from iOS rubber-banding)
+                
+                if (header) {
+                    const isMenuOpen = document.body.classList.contains('menu-active'); // Check if mobile menu is currently open
+
+                    if (currentScrollY > 50) { 
+                        header.classList.add('scrolled'); // Add the 'scrolled' class to shrink the header
+                        
+                        // Prevent nav from hiding while the mobile menu is open
+                        if (!isMenuOpen) {
+                            // 10px threshold prevents jittering/flashing on highly sensitive touch screens
+                            if (Math.abs(currentScrollY - lastScrollY) > 10) { 
+                                currentScrollY > lastScrollY ? header.classList.add('nav-hidden') : header.classList.remove('nav-hidden');
+                            }
+                        } else {
+                            header.classList.remove('nav-hidden'); // Force show if menu is open
+                        }
+                    } else { 
+                        header.classList.remove('scrolled');
+                        header.classList.remove('nav-hidden'); 
+                    }
+                }
+                
+                const isScrolled = currentScrollY > 300; // Create a variable that is true if the user has scrolled down more than 300 pixels
+                if (scrollTopBtn) isScrolled ? scrollTopBtn.classList.add('show') : scrollTopBtn.classList.remove('show'); // Show the 'scroll to top' button if scrolled far down, otherwise hide it
+                floatingThemeBtns.forEach(btn => isScrolled ? btn.classList.add('show') : btn.classList.remove('show')); // Loop through floating theme buttons and show/hide them based on the same scroll depth
+                
+                if (Math.abs(currentScrollY - lastScrollY) > 10 || currentScrollY <= 50) {
+                    lastScrollY = currentScrollY; // Only update previous position every 10px so slow scrolls accumulate
+                }
+                isScrolling = false;
+            });
+            isScrolling = true;
+        }
     }); // End of the scroll event listener
 
     if (scrollTopBtn) { // Check if the scroll top button exists on this specific HTML page
@@ -67,7 +100,12 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
         const activeItem = document.querySelector('.nav-item.active'); // Find the link that represents the current page the user is on
         setSliderPosition(activeItem); // Immediately snap the slider to the active link
         window.addEventListener('load', () => setSliderPosition(document.querySelector('.nav-item.active'))); // Recalculate slider position when all images/fonts finish loading
-        window.addEventListener('resize', () => setSliderPosition(document.querySelector('.nav-item.active'))); // Recalculate slider position if the user resizes their browser window
+        
+        let resizeTimer;
+        window.addEventListener('resize', () => { // Recalculate slider position if the user resizes their browser window
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => setSliderPosition(document.querySelector('.nav-item.active')), 150);
+        });
 
         navItems.forEach(item => { // Loop through all navigation links
             item.addEventListener('mouseenter', function() { // Listen for when the user's mouse pointer enters the link area
@@ -101,9 +139,9 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
     /* =========================================
        5. MOBILE TOUCH SUPPORT FOR SERVICE CARDS
        ========================================= */
+    const serviceCards = document.querySelectorAll('.service-3d-card'); // Find all 3D service cards on the page (cached outside listener)
     document.addEventListener('click', (e) => { // Listen for clicks or taps anywhere on the entire page
         const clickedCard = e.target.closest('.service-3d-card'); // Check if the clicked element is inside a 3D service card, and grab that card
-        const serviceCards = document.querySelectorAll('.service-3d-card'); // Find all 3D service cards on the page
         
         if (!clickedCard) { // If the user clicked outside of ANY service card
             serviceCards.forEach(card => { // Loop through all cards
@@ -137,25 +175,41 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
     const navLinksContainer = document.getElementById('nav-links'); // Find the container holding the mobile links
 
     if (mobileToggle && navLinksContainer) { // Ensure both the button and container exist
-        const icon = mobileToggle.querySelector('i'); // Find the FontAwesome icon inside the hamburger button
         
         mobileToggle.addEventListener('click', () => { // Listen for clicks on the hamburger button
             navLinksContainer.classList.toggle('menu-open'); // Toggle the 'menu-open' class to slide the links down or up
-            icon.className = navLinksContainer.classList.contains('menu-open') ? 'fas fa-times' : 'fas fa-bars'; // Change icon to an 'X' if open, or a hamburger if closed
+            document.body.classList.toggle('menu-active'); // Toggle background blur
         }); // End of click listener
 
         const navItemsList = navLinksContainer.querySelectorAll('.nav-item'); // Find all the links inside the mobile menu
         navItemsList.forEach(item => { // Loop through each mobile link
             item.addEventListener('click', () => { // Listen for clicks on the individual links
                 navLinksContainer.classList.remove('menu-open'); // Close the mobile menu automatically
-                icon.className = 'fas fa-bars'; // Reset the icon back to the hamburger shape
+                document.body.classList.remove('menu-active'); // Remove background blur
             }); // End of click listener
         }); // End of forEach loop
+
+        document.addEventListener('click', (e) => { // Listen for any clicks on the page
+            if (document.body.classList.contains('menu-active')) { // If the mobile menu is currently open
+                if (!e.target.closest('.floating-header')) { // And the user clicked outside of the navigation header
+                    navLinksContainer.classList.remove('menu-open'); // Close the menu
+                    document.body.classList.remove('menu-active'); // Remove the background blur
+                }
+            }
+        }); // End of outside click listener
     } // End of if statement
+
+    /* =========================================
+       7. DYNAMIC COPYRIGHT YEAR
+       ========================================= */
+    const yearSpan = document.getElementById('current-year'); // Find the span holding the year
+    if (yearSpan) { // Check if the span exists on the current page
+        yearSpan.textContent = new Date().getFullYear(); // Set its text to the current year dynamically
+    }
 }); // End of DOMContentLoaded listener
 
 /* =========================================
-   7. BOOKING MODAL LOGIC
+   8. BOOKING MODAL LOGIC
    ========================================= */
 window.BookingApp = { // Create a globally accessible object to store all functions related to the booking form
     currentStep: 0, // A variable to track which page of the multi-step form is currently visible (starts at 0)
@@ -220,6 +274,18 @@ window.BookingApp = { // Create a globally accessible object to store all functi
         try { // Start a block of code that might fail (error handling)
             const formData = form ? new FormData(form) : new FormData(); // Extract all user inputs from the form into a FormData object
             const data = Object.fromEntries(formData.entries()); // Convert the FormData object into a standard JSON object
+
+            // --- ANTI-SPAM HONEYPOT CHECK ---
+            if (data._gotcha) {
+                console.warn("Spambot intercepted!"); // Log for debugging
+                this.showNotification("Booking Request Sent Successfully!", 'success'); // Fake success so the bot leaves
+                if (form) form.reset(); 
+                this.closeModal(); 
+                this.currentStep = 0; 
+                if (nextBtn) nextBtn.innerHTML = originalText;
+                return; // Stop the function completely, do not send to Formspree
+            }
+            // --------------------------------
 
             const response = await fetch('https://formspree.io/f/xpqopjrw', { // Pause execution to send the data to Formspree
                 method: 'POST', // Declare this as a POST request (sending data)

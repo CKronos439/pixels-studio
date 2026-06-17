@@ -6,10 +6,9 @@
     <title>Weddings | Pixels Studio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&family=Cormorant+Garamond:wght@700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="weddings.css">
     <link rel="stylesheet" href="../CSS/global.css">
     <link rel="stylesheet" href="../CSS/modal.css">
-    <link rel="stylesheet" href="service-animations.css">
+    <link rel="stylesheet" href="services-shared.css">
 </head>
 <body>
 
@@ -24,7 +23,7 @@
     <!-- =========================================
          HERO HEADER
     ========================================== -->
-    <header class="weddings-hero">
+    <header class="service-hero weddings-hero">
         <a href="../#services" class="floating-back-btn">
             <i class="fas fa-arrow-left"></i>
         </a>
@@ -32,10 +31,12 @@
         <div class="hero-overlay">
             <h1 class="load-reveal delay-load-1">WEDDINGS</h1>
             
-            <a href="javascript:void(0)" class="btn-book-session load-reveal delay-load-2" onclick="openModal('wedding')">
-                <i class="fas fa-calendar-alt" style="margin-right:8px;"></i>
-                Book a Session
-            </a>
+            <div class="load-reveal delay-load-2">
+                <a href="javascript:void(0)" class="btn-book-session" onclick="openModal('wedding')">
+                    <i class="fas fa-calendar-alt" style="margin-right:8px;"></i>
+                    Book a Session
+                </a>
+            </div>
         </div>
     </header>
     <!-- /HERO HEADER END -->
@@ -43,7 +44,7 @@
     <!-- =========================================
          SERVICE INTRODUCTION & GALLERY
     ========================================== -->
-    <section class="weddings-intro">
+    <section class="service-intro weddings-intro">
         <div class="container">
             <p class="intro-welcome">Welcome to Pixels Studio's Wedding Catalogue.</p>
             <p class="intro-text">
@@ -53,14 +54,26 @@
             <h3 class="projects-title">PROJECTS</h3>
             
             <div class="gallery-grid" id="gallery">
-                <div class="gallery-item"><img src="../Assets/wedding 1.jpg" alt="wedding" loading="lazy"></div>
-                <div class="gallery-item"><img src="../Assets/wedding 2.jpg" alt="wedding" loading="lazy"></div>
-                <div class="gallery-item"><img src="../Assets/wedding 3.jpg" alt="wedding" loading="lazy"></div>
+                <div class="gallery-item"><img src="../Assets/wedding 1.jpg" alt="wedding" loading="lazy" decoding="async"></div>
+                <div class="gallery-item"><img src="../Assets/wedding 2.jpg" alt="wedding" loading="lazy" decoding="async"></div>
+                <div class="gallery-item"><img src="../Assets/wedding 3.jpg" alt="wedding" loading="lazy" decoding="async"></div>
             </div>
             <a href="#gallery" class="see-more-btn">See More</a>
         </div>
     </section>
     <!-- /SERVICE INTRODUCTION END -->
+
+    <!-- =========================================
+         MINIMAL FOOTER
+    ========================================== -->
+    <footer class="minimal-footer">
+        <p class="copyright">&copy; Pixels Studio <span id="current-year">2025</span></p>
+        <div class="footer-links">
+            <a href="../index.html">Home</a>
+            <a href="../index.html#contact">Contact</a>
+        </div>
+    </footer>
+    <!-- /MINIMAL FOOTER END -->
 
     <!-- =========================================
          BOOKING MODAL
@@ -96,6 +109,9 @@
                 <!-- Sets the subject line of the email you receive -->
                 <input type="hidden" name="_subject" value="New Wedding Booking - Pixels Studio">
                 
+                <!-- Anti-Spam Honeypot Field -->
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+
                 <div class="form-step active" id="step1">
                     <div class="input-group">
                         <label>Full Name</label>

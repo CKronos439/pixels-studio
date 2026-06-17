@@ -1,0 +1,124 @@
+/* =========================================
+   ADMIN PAGE ANIMATIONS
+   ========================================= */
+
+/* --- 0. GLOBAL PAGE FADE IN --- */
+@keyframes pageFadeIn {
+    from { opacity: 0; background-color: #000; }
+    to { opacity: 1; background-color: var(--bg-main); }
+}
+body {
+    animation: pageFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- 1. PAGE ENTRANCE --- */
+@keyframes sidebarSlideIn {
+    from { transform: translateX(-100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes contentFadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bottomBarSlideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+}
+
+/* Initial Load Entrances */
+@media (min-width: 769px) {
+    .sidebar { 
+        animation: sidebarSlideIn 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+    }
+}
+
+.main-content { 
+    animation: contentFadeIn 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
+}
+
+@media (max-width: 768px) {
+    .mobile-tab-bar {
+        animation: bottomBarSlideUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+}
+
+/* --- 2. SECTION STAGGERED REVEALS --- */
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes childFadeUp {
+    from { opacity: 0; transform: translateY(25px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Calendar Day Entrance */
+@keyframes popInDay {
+    from { opacity: 0; transform: scale(0.85); }
+    to { opacity: 1; transform: scale(1); }
+}
+.calendar-grid .cal-day {
+    animation: popInDay 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- 3. CONSTANT & INTERACTIVE EFFECTS --- */
+
+/* Logo glow effect */
+@keyframes subtleGlow {
+    0%, 100% { box-shadow: 0 0 5px rgba(138, 10, 27, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(138, 10, 27, 0.8); }
+}
+.logo { 
+    animation: subtleGlow 3s infinite ease-in-out; 
+}
+
+/* Upload zone hover icon float */
+@keyframes iconFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+.upload-zone:hover svg { 
+    animation: iconFloat 2s infinite ease-in-out; 
+    color: var(--primary); 
+}
+
+/* Status badge subtle pulsing heartbeat */
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+.badge.pending {
+    animation: badgePulse 2.5s infinite ease-in-out;
+}
+
+/* Bell Icon Pulse */
+@keyframes pulse-ring { 
+    0% { box-shadow: 0 0 0 0 rgba(138, 10, 27, 0.7); } 
+    70% { box-shadow: 0 0 0 6px rgba(138, 10, 27, 0); } 
+    100% { box-shadow: 0 0 0 0 rgba(138, 10, 27, 0); } 
+}
+
+/* Upload zone dashed border animation */
+@keyframes dashAnim { 
+    100% { background-position: 15px top, -15px bottom, left -15px, right 15px; } 
+}
+
+/* Skeleton shimmer */
+@keyframes shimmer { 
+    0% { background-position: 200% 0; } 
+    100% { background-position: -200% 0; } 
+}
+
+/* --- 4. OVERLAYS, MODALS & TOASTS --- */
+@keyframes slideInRight { 
+    from { transform: translateX(100%); opacity: 0; } 
+    to { transform: translateX(0); opacity: 1; } 
+}
+
+@keyframes slideOutRight { 
+    from { transform: translateX(0); opacity: 1; } 
+    to { transform: translateX(100%); opacity: 0; } 
+}
