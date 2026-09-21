@@ -14,6 +14,13 @@
     justify-content: center;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
 }
 
 .modal-container {
@@ -27,7 +34,14 @@
     position: relative;
     font-family: 'Inter', sans-serif;
     overflow: hidden;
-    transition: background 0.5s ease, border-color 0.5s ease, box-shadow 0.5s ease;
+    transform: translateY(12px) scale(0.96);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                background 0.5s ease, 
+                border-color 0.5s ease;
+}
+
+.modal-overlay.active .modal-container {
+    transform: translateY(0) scale(1);
 }
 
 .modal-header {
@@ -126,20 +140,15 @@
 
 .form-step {
     display: none;
+    opacity: 0;
+    transform: translateX(12px);
+    transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.22s ease-out;
 }
 
 .form-step.active {
     display: block;
-    animation: fadeIn 0.3s;
-}
-
-@keyframes fadeIn { 
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .input-group {
@@ -241,7 +250,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     align-items: center;
     gap: 8px;
     padding: 10px 0;
-    transition: color 0.3s;
+    transition: color 0.16s ease, transform 0.16s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .nav-btn.back:hover {
@@ -249,7 +258,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .nav-btn.back:active {
-    transform: scale(0.95);
+    transform: scale(0.96);
 }
 
 .nav-btn.next {
@@ -264,16 +273,21 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: 0.3s;
+    transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.16s ease, 
+                box-shadow 0.16s ease;
 }
 
-.nav-btn.next:hover {
-    background-color: var(--primary-dark);
-    box-shadow: 0 8px 20px rgba(138, 10, 27, 0.4);
+@media (hover: hover) and (pointer: fine) {
+    .nav-btn.next:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(138, 10, 27, 0.35);
+    }
 }
 
 .nav-btn.next:active {
-    transform: scale(0.95);
+    transform: scale(0.97);
 }
 
 .modal-footer-bar {
@@ -292,7 +306,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     color: #888;
     border: none;
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease;
 }
 
 .cancel-link:hover {
@@ -301,7 +315,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 }
 
 .cancel-link:active {
-    transform: scale(0.95);
+    opacity: 0.7;
 }
 
 /* Form Validation Error State */
@@ -360,7 +374,9 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     z-index: 10015;
     opacity: 0;
     visibility: hidden;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.25s ease-out, 
+                visibility 0.25s;
     font-family: 'Inter', sans-serif;
     font-size: 0.95rem;
     font-weight: 500;

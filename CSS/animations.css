@@ -6,17 +6,26 @@
 @keyframes navFadeIn {
     from { 
         opacity: 0; 
-        transform: translateY(-20px); 
+        transform: translateY(-20px) scale(0.95); 
+        filter: blur(4px);
     }
     to { 
         opacity: 1; 
-        transform: translateY(0); 
+        transform: translateY(0) scale(1); 
+        filter: blur(0px);
     }
 }
 
 .floating-header {
     opacity: 0;
-    animation: navFadeIn 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    animation: navFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Disable initial keyframes fill-mode when scrolled, hidden, or exiting */
+.floating-header.scrolled,
+.floating-header.nav-hidden,
+body.page-exiting .floating-header {
+    animation: none !important;
 }
 
 /* Hero Content Float Up */
@@ -61,23 +70,26 @@
    2. REPEATING SCROLL REVEAL ENGINE
    ========================================= */
 
-.scroll-reveal {
+.scroll-reveal,
+.reveal-up {
     opacity: 0;
     will-change: transform, opacity;
-    transform: translateY(50px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateY(24px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.4s ease-out;
 }
 
-.scroll-reveal.active {
+.scroll-reveal.active,
+.reveal-up.active {
     opacity: 1 !important;
     transform: translateY(0) scale(1) !important;
 }
 
 .scroll-reveal.reveal-left {
-    transform: translateX(-30px);
+    transform: translateX(-16px);
 }
 .scroll-reveal.reveal-right {
-    transform: translateX(30px);
+    transform: translateX(16px);
 }
 
 .scroll-reveal.active.reveal-left,
@@ -91,13 +103,13 @@
    ========================================= */
 
 .delay-100 {
-    transition-delay: 0.2s !important;
+    transition-delay: 0.1s !important;
 }
 .delay-200 {
-    transition-delay: 0.4s !important;
+    transition-delay: 0.2s !important;
 }
 .delay-300 {
-    transition-delay: 0.6s !important;
+    transition-delay: 0.3s !important;
 }
 
 
@@ -105,21 +117,27 @@
    4. PAGE TRANSITIONS
    ========================================= */
 
-body {
-    transition: opacity 0.4s ease-in-out;
-    opacity: 1;
-}
-
-body.fade-out {
-    opacity: 0;
-}
-
 /* Mobile reduction for slide animations to prevent horizontal overflow */
 @media (max-width: 768px) {
     .scroll-reveal.reveal-left {
-        transform: translateX(-50px);
+        transform: translateX(-16px);
     }
     .scroll-reveal.reveal-right {
-        transform: translateX(50px);
+        transform: translateX(16px);
+    }
+}
+
+/* Reduced Motion Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .scroll-reveal,
+    .brand-huge,
+    .hero-intro,
+    .hero-subtext,
+    .button-group,
+    .floating-header {
+        animation: none !important;
+        transition: opacity 0.2s ease !important;
+        transform: none !important;
+        opacity: 1 !important;
     }
 }

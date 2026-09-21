@@ -19,12 +19,22 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
 
     themeBtns.forEach(btn => { // Loop through the theme buttons again to attach click listeners
         btn.addEventListener('click', (e) => { // Listen for a mouse click or tap on the button
-            e.preventDefault(); // Stop the button from acting like a normal link (prevents jumping to top of page)
-            document.body.classList.toggle('light-theme'); // Add the 'light-theme' class if it's missing, or remove it if it's there
-            localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark'); // Save the user's theme choice to their browser memory
-            updateThemeIcon(); // Run the icon update function again to swap the sun/moon based on the new state
+            e.preventDefault(); // Stop the button from acting like a normal link
+            btn.blur();
+            btn.classList.add('theme-swapping');
+            setTimeout(() => {
+                document.body.classList.toggle('light-theme'); // Toggle light/dark mode
+                localStorage.setItem('theme', document.body.classList.contains('light-theme') ? 'light' : 'dark'); // Save choice
+                updateThemeIcon(); // Swap icon class
+                setTimeout(() => btn.classList.remove('theme-swapping'), 50);
+            }, 120);
         }); // End of the click event listener
     }); // End of the forEach loop
+
+    /* Disable automatic browser scroll restoration to prevent header jump on page load */
+    if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+    }
 
     /* =========================================
        2. HEADER & SCROLL LOGIC
@@ -33,46 +43,64 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
     const scrollTopBtn = document.getElementById('scrollTopBtn'); // Find the floating 'scroll to top' button
     const floatingThemeBtns = document.querySelectorAll('.floating-theme-btn'); // Find all floating theme toggle buttons
 
-    let isScrolling = false;
-    let lastScrollY = window.scrollY; // Track previous scroll position
-    window.addEventListener('scroll', () => { // Listen for any scrolling movement on the entire browser window
-        if (!isScrolling) {
-            window.requestAnimationFrame(() => {
-                const currentScrollY = Math.max(0, window.scrollY); // Get current scroll position (Math.max prevents negative values from iOS rubber-banding)
-                
-                if (header) {
-                    const isMenuOpen = document.body.classList.contains('menu-active'); // Check if mobile menu is currently open
+    let lastScrollY = Math.max(0, window.scrollY);
+    let menuOpenScrollY = 0;
+    let ticking = false;
 
-                    if (currentScrollY > 50) { 
-                        header.classList.add('scrolled'); // Add the 'scrolled' class to shrink the header
+    // Reset scroll & header state cleanly if navigating without hash
+    if (!window.location.hash) {
+        window.scrollTo(0, 0);
+    }
+    if (header && window.scrollY <= 40) {
+        header.classList.remove('nav-hidden');
+        header.classList.remove('scrolled');
+    }
+
+    function closeMobileMenu() {
+        const navLinks = document.getElementById('nav-links');
+        const mobToggle = document.querySelector('.mobile-toggle');
+        if (navLinks) navLinks.classList.remove('menu-open');
+        document.body.classList.remove('menu-active');
+        if (mobToggle) mobToggle.blur();
+    }
+
+    window.addEventListener('scroll', () => { // Listen for any scrolling movement on the entire browser window
+        if (!ticking) {
+            window.requestAnimationFrame(() => {
+                const currentScrollY = Math.max(0, window.scrollY); // Prevent negative scroll values (iOS bounce)
+                const isMenuOpen = document.body.classList.contains('menu-active'); // Check if mobile menu is currently open
+                
+                // Auto-close mobile menu if open and user scrolls away from position where menu was opened
+                if (isMenuOpen && Math.abs(currentScrollY - menuOpenScrollY) > 12) {
+                    closeMobileMenu();
+                }
+
+                if (header) {
+                    if (currentScrollY > 40) { 
+                        header.classList.add('scrolled'); // Add scrolled state
                         
-                        // Prevent nav from hiding while the mobile menu is open
-                        if (!isMenuOpen) {
-                            // 10px threshold prevents jittering/flashing on highly sensitive touch screens
-                            if (Math.abs(currentScrollY - lastScrollY) > 10) { 
-                                currentScrollY > lastScrollY ? header.classList.add('nav-hidden') : header.classList.remove('nav-hidden');
-                            }
+                        // Keep hidden while scrolled away from top (unless mobile menu is expanded)
+                        if (!document.body.classList.contains('menu-active')) {
+                            header.classList.add('nav-hidden');
                         } else {
-                            header.classList.remove('nav-hidden'); // Force show if menu is open
+                            header.classList.remove('nav-hidden');
                         }
                     } else { 
                         header.classList.remove('scrolled');
-                        header.classList.remove('nav-hidden'); 
+                        header.classList.remove('nav-hidden'); // Only show when at top of website
                     }
                 }
                 
-                const isScrolled = currentScrollY > 300; // Create a variable that is true if the user has scrolled down more than 300 pixels
-                if (scrollTopBtn) isScrolled ? scrollTopBtn.classList.add('show') : scrollTopBtn.classList.remove('show'); // Show the 'scroll to top' button if scrolled far down, otherwise hide it
-                floatingThemeBtns.forEach(btn => isScrolled ? btn.classList.add('show') : btn.classList.remove('show')); // Loop through floating theme buttons and show/hide them based on the same scroll depth
+                const isScrolled = currentScrollY > 300; 
+                if (scrollTopBtn) scrollTopBtn.classList.toggle('show', isScrolled);
+                floatingThemeBtns.forEach(btn => btn.classList.toggle('show', isScrolled));
                 
-                if (Math.abs(currentScrollY - lastScrollY) > 10 || currentScrollY <= 50) {
-                    lastScrollY = currentScrollY; // Only update previous position every 10px so slow scrolls accumulate
-                }
-                isScrolling = false;
+                lastScrollY = currentScrollY; // Keep position updated every frame
+                ticking = false;
             });
-            isScrolling = true;
+            ticking = true;
         }
-    }); // End of the scroll event listener
+    }, { passive: true }); // End of the scroll event listener
 
     if (scrollTopBtn) { // Check if the scroll top button exists on this specific HTML page
         scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' })); // When clicked, animate the browser scroll position back to 0 (the very top)
@@ -140,32 +168,14 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
        5. MOBILE TOUCH SUPPORT FOR SERVICE CARDS
        ========================================= */
     const serviceCards = document.querySelectorAll('.service-3d-card'); // Find all 3D service cards on the page (cached outside listener)
-    document.addEventListener('click', (e) => { // Listen for clicks or taps anywhere on the entire page
-        const clickedCard = e.target.closest('.service-3d-card'); // Check if the clicked element is inside a 3D service card, and grab that card
-        
-        if (!clickedCard) { // If the user clicked outside of ANY service card
-            serviceCards.forEach(card => { // Loop through all cards
-                card.classList.remove('active-touch'); // Remove the mobile hover state class
-                card.blur(); // Remove browser focus to reset any CSS hover states
-            }); // End of forEach loop
-            return; // Stop running the rest of the click listener code
-        } // End of if statement
-
-        serviceCards.forEach(card => { // Loop through all cards
-            if (card !== clickedCard) { // Check if the current card is NOT the one the user just tapped
-                card.classList.remove('active-touch'); // Close this card
-                card.blur(); // Remove focus
-            } // End of if statement
-        }); // End of forEach loop
-
-        if (e.target.closest('.view-port-btn')) return; // If the user clicked the actual button inside the card, do nothing and let the link navigate them
-
-        if (clickedCard.classList.contains('active-touch')) { // If the tapped card is ALREADY open
-            clickedCard.classList.remove('active-touch'); // Close it
-            clickedCard.blur(); // Remove browser focus
-        } else { // If the tapped card is currently closed
-            clickedCard.classList.add('active-touch'); // Open it by adding the active touch class
-        } // End of if/else statement
+    document.addEventListener('click', (e) => {
+        const clickedCard = e.target.closest('.service-3d-card');
+        serviceCards.forEach(card => {
+            if (card !== clickedCard) card.classList.remove('active-touch');
+        });
+        if (clickedCard && !e.target.closest('.view-port-btn')) {
+            clickedCard.classList.toggle('active-touch');
+        }
     }); // End of click listener
 
     /* =========================================
@@ -175,37 +185,107 @@ document.addEventListener('DOMContentLoaded', () => { // Listen for the entire H
     const navLinksContainer = document.getElementById('nav-links'); // Find the container holding the mobile links
 
     if (mobileToggle && navLinksContainer) { // Ensure both the button and container exist
-        
-        mobileToggle.addEventListener('click', () => { // Listen for clicks on the hamburger button
-            navLinksContainer.classList.toggle('menu-open'); // Toggle the 'menu-open' class to slide the links down or up
-            document.body.classList.toggle('menu-active'); // Toggle background blur
+        mobileToggle.addEventListener('click', (e) => { // Listen for clicks on the hamburger button
+            e.stopPropagation();
+            const isOpen = navLinksContainer.classList.toggle('menu-open'); // Toggle the 'menu-open' class
+            document.body.classList.toggle('menu-active', isOpen); // Toggle background blur state
+            if (isOpen) {
+                menuOpenScrollY = Math.max(0, window.scrollY); // Record Y position when menu opened
+            }
         }); // End of click listener
 
-        const navItemsList = navLinksContainer.querySelectorAll('.nav-item'); // Find all the links inside the mobile menu
-        navItemsList.forEach(item => { // Loop through each mobile link
-            item.addEventListener('click', () => { // Listen for clicks on the individual links
-                navLinksContainer.classList.remove('menu-open'); // Close the mobile menu automatically
-                document.body.classList.remove('menu-active'); // Remove background blur
-            }); // End of click listener
-        }); // End of forEach loop
+        const mobileNavItems = navLinksContainer.querySelectorAll('.nav-item');
+        mobileNavItems.forEach(item => {
+            item.addEventListener('click', (e) => {
+                const href = item.getAttribute('href');
+                const isMenuOpen = document.body.classList.contains('menu-active');
+                
+                if (isMenuOpen && href && !href.startsWith('#') && href !== 'javascript:void(0)') {
+                    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                    const targetPage = href.split('#')[0];
+                    
+                    if (targetPage && targetPage !== currentPage) {
+                        e.preventDefault();
+                        closeMobileMenu();
+                        setTimeout(() => {
+                            window.location.href = href;
+                        }, 180);
+                    } else {
+                        closeMobileMenu();
+                    }
+                } else {
+                    closeMobileMenu();
+                }
+            });
+        });
 
         document.addEventListener('click', (e) => { // Listen for any clicks on the page
             if (document.body.classList.contains('menu-active')) { // If the mobile menu is currently open
                 if (!e.target.closest('.floating-header')) { // And the user clicked outside of the navigation header
-                    navLinksContainer.classList.remove('menu-open'); // Close the menu
-                    document.body.classList.remove('menu-active'); // Remove the background blur
+                    closeMobileMenu(); // Close the menu
                 }
             }
         }); // End of outside click listener
+
+        window.addEventListener('touchmove', () => {
+            if (document.body.classList.contains('menu-active')) {
+                const currentScrollY = Math.max(0, window.scrollY);
+                if (Math.abs(currentScrollY - menuOpenScrollY) > 10) {
+                    closeMobileMenu();
+                }
+            }
+        }, { passive: true });
     } // End of if statement
 
     /* =========================================
-       7. DYNAMIC COPYRIGHT YEAR
+       7. UNIVERSAL CROSS-PAGE TRANSITION ENGINE (DESKTOP & MOBILE)
+       ========================================= */
+    const siteNavLinks = document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="mailto:"]):not([href^="tel:"])');
+
+    siteNavLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || href === 'javascript:void(0)') return;
+
+            // Retract mobile menu if open
+            closeMobileMenu();
+
+            // Extract target page filename
+            const cleanHref = href.split('#')[0];
+            const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+
+            // Determine if navigating to a different HTML page
+            const isDifferentPage = cleanHref && 
+                cleanHref !== currentPath && 
+                cleanHref !== '.' && 
+                cleanHref !== './';
+
+            if (isDifferentPage) {
+                if (header) {
+                    header.classList.remove('nav-hidden');
+                    header.classList.remove('scrolled');
+                }
+            }
+        });
+    });
+
+    /* =========================================
+       7. DYNAMIC COPYRIGHT YEAR & SKELETON RESOLVER
        ========================================= */
     const yearSpan = document.getElementById('current-year'); // Find the span holding the year
     if (yearSpan) { // Check if the span exists on the current page
         yearSpan.textContent = new Date().getFullYear(); // Set its text to the current year dynamically
     }
+
+    const siteImages = document.querySelectorAll('img');
+    siteImages.forEach(img => {
+        if (!img.complete) {
+            img.classList.add('img-loading');
+            img.addEventListener('load', () => img.classList.add('img-loaded'), { once: true });
+        } else {
+            img.classList.add('img-loaded');
+        }
+    });
 }); // End of DOMContentLoaded listener
 
 /* =========================================

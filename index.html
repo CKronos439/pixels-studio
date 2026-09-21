@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pixels Studio | Where Moments Become Memories</title>
+    <meta name="description" content="Pixels Studio - Capturing beautiful moments and precious memories with professional photography services for kids, photoshoots, and weddings.">
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="CSS/animations.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     
     <!-- =========================================
          THEME INITIALIZATION
@@ -31,7 +33,7 @@
     ========================================== -->
     <header class="floating-header" id="main-header">
         <nav class="glass-nav" id="nav-links">
-            <a href="index.html" class="brand-logo-link">
+            <a href="index.html" class="brand-logo-link" aria-label="Pixels Studio Home">
                 <img src="Assets/pixels studio footer.png" alt="Pixels Studio" class="logo-dark">
                 <img src="Assets/pixels studio.png" alt="Pixels Studio" class="logo-light">
             </a>
@@ -46,9 +48,11 @@
                 <i class="fa-solid fa-moon"></i>
             </button>
         </nav>
-        <div class="mobile-toggle"><i class="fas fa-bars"></i></div>
+        <div class="mobile-toggle" aria-label="Toggle Navigation Menu"><i class="fas fa-bars"></i></div>
     </header>
     <!-- /HEADER END -->
+    
+    <main id="main-content">
     
     <!-- =========================================
          HERO SECTION
@@ -179,7 +183,7 @@
                         <div class="detail-item">
                             <i class="fas fa-map-marker-alt"></i>
                             <div>
-                                <h4>Studio Location</h4>
+                                <h3>Studio Location</h3>
                                 <span>Ankwa Dobro<br>Nsawam, Eastern Region</span>
                             </div>
                         </div>
@@ -187,7 +191,7 @@
                         <a href="javascript:void(0)" onclick="window.open('https://wa.me/233206661411', '_blank')" class="detail-item clickable">
                             <i class="fab fa-whatsapp"></i>
                             <div>
-                                <h4>WhatsApp</h4>
+                                <h3>WhatsApp</h3>
                                 <span>+233 20 666 1411</span>
                             </div>
                         </a>
@@ -195,7 +199,7 @@
                         <a href="tel:+233549216815" class="detail-item clickable">
                             <i class="fas fa-phone"></i>
                             <div>
-                                <h4>Call</h4>
+                                <h3>Call</h3>
                                 <span>+233 54 921 6815</span>
                             </div>
                         </a>
@@ -203,7 +207,7 @@
                         <a href="mailto:pixelsstudio4@gmail.com" class="detail-item clickable">
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <h4>Email Us</h4>
+                                <h3>Email Us</h3>
                                 <span>pixelsstudio4@gmail.com</span>
                             </div>
                         </a>
@@ -221,6 +225,7 @@
         </div>
     </section>
     <!-- /CONTACT SECTION END -->
+    </main>
 
     <!-- =========================================
          FOOTER SECTION
@@ -247,6 +252,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
@@ -291,14 +297,14 @@
                 <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
                 <div class="form-step active" id="step1">
-                    <div class="input-group"><label>Full Name</label><input type="text" name="fullName" placeholder="John Smith" required></div>
-                    <div class="input-group"><label>Phone Number</label><input type="tel" name="phone" placeholder="+233 XX XXX XXXX" required></div>
-                    <div class="input-group"><label>Email Address</label><input type="email" name="email" placeholder="your@email.com" required></div>
+                    <div class="input-group"><label for="fullNameInput">Full Name</label><input type="text" id="fullNameInput" name="fullName" placeholder="John Smith" autocomplete="name" enterkeyhint="next" required></div>
+                    <div class="input-group"><label for="phoneInput">Phone Number</label><input type="tel" id="phoneInput" name="phone" placeholder="+233 XX XXX XXXX" autocomplete="tel" enterkeyhint="next" required></div>
+                    <div class="input-group"><label for="emailInput">Email Address</label><input type="email" id="emailInput" name="email" placeholder="your@email.com" autocomplete="email" enterkeyhint="next" required></div>
                 </div>
                 <div class="form-step" id="step2">
                     <div class="input-group">
-                        <label>Service</label>
-                        <select id="serviceSelect" name="serviceType">
+                        <label for="serviceSelect">Service</label>
+                        <select id="serviceSelect" name="serviceType" aria-label="Select Service Type">
                             <option value="photoshoot">Photoshoot</option>
                             <option value="wedding">Wedding Coverage</option>
                             <option value="kids">Kids Photography</option>

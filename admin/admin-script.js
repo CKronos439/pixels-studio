@@ -24,12 +24,11 @@ const DATA = { // Create a master data object to hold all dummy arrays for the f
 /* =========================================
    SECURITY UTILITIES
    ========================================= */
-function escapeHTML(str) { // Prevent Cross-Site Scripting (XSS) by sanitizing user data
-    if (!str) return ''; // If empty, return an empty string
-    return String(str).replace(/[&<>'"]/g, match => { // Use RegEx to find dangerous HTML characters
-        const escapeMap = { '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }; // Map characters to safe HTML entities
-        return escapeMap[match]; // Replace matched character
-    });
+function escapeHTML(str) {
+    if (!str) return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
 }
 
 /* =========================================

@@ -142,17 +142,20 @@
     font-weight: bold;
     font-size: 1rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    transition: var(--transition);
-    animation: btnPulse 2.5s ease-in-out infinite;
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                box-shadow 0.2s ease, 
+                background-color 0.2s ease;
 }
 
-.btn-book-session:hover {
-    filter: brightness(1.15);
-    box-shadow: 0 8px 25px rgba(138, 10, 27, 0.5);
+@media (hover: hover) and (pointer: fine) {
+    .btn-book-session:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(138, 10, 27, 0.4);
+    }
 }
 
 .btn-book-session:active {
-    transform: scale(0.95);
+    transform: scale(0.97);
 }
 
 .floating-back-btn {
@@ -168,17 +171,21 @@
     align-items: center;
     justify-content: center;
     color: white;
-    transition: var(--transition);
+    transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+                background-color 0.2s ease, 
+                box-shadow 0.2s ease;
 }
 
-.floating-back-btn:hover {
-    background-color: var(--primary);
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 5px 15px rgba(138, 10, 27, 0.5);
+@media (hover: hover) and (pointer: fine) {
+    .floating-back-btn:hover {
+        background-color: var(--primary);
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(138, 10, 27, 0.4);
+    }
 }
 
 .floating-back-btn:active {
-    transform: scale(0.9);
+    transform: scale(0.96);
 }
 
 /* Introduction Content Blocks */
@@ -435,18 +442,20 @@ body.light-theme .see-more-btn:hover {
 }
 
 body.light-theme .minimal-footer {
-    background: #f8f9fa;
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    background: #ffffff !important;
+    border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.05) !important;
 }
 
-body.light-theme .minimal-footer .copyright {
-    color: #555555;
+body.light-theme .minimal-footer .copyright,
+body.light-theme .minimal-footer .copyright span {
+    color: #444444 !important;
 }
 
 body.light-theme .minimal-footer .footer-links a {
-    color: #222222;
+    color: #111111 !important;
 }
 
 body.light-theme .minimal-footer .footer-links a:hover {
-    color: var(--primary);
+    color: var(--primary) !important;
 }

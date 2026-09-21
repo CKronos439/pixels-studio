@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Pixels Studio</title>
+    <meta name="description" content="Official Privacy Policy of Pixels Studio - Comprehensive legal disclosures regarding data collection, client photography rights, privacy protection, and data security.">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="CSS/global.css">
+    <link rel="stylesheet" href="CSS/about.css">
+    <link rel="stylesheet" href="CSS/animations.css">
+
+    <style>
+        .privacy-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 140px 20px 80px;
+        }
+        .privacy-header-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        body.light-theme .privacy-header-card {
+            background: rgba(0, 0, 0, 0.02);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+        .privacy-header-card h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--text-main);
+            margin-bottom: 12px;
+        }
+        .privacy-badge {
+            display: inline-block;
+            background: var(--primary, #8a0a1b);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .privacy-effective {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 0;
+        }
+        .privacy-section {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 32px 36px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        body.light-theme .privacy-section {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        }
+        .privacy-section:hover {
+            border-color: rgba(138, 10, 27, 0.4);
+        }
+        .privacy-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--text-main);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .privacy-section h2 i {
+            color: var(--primary, #8a0a1b);
+            font-size: 1.3rem;
+        }
+        .privacy-section p {
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 1rem;
+        }
+        .privacy-section p:last-child {
+            margin-bottom: 0;
+        }
+        .privacy-section ul {
+            margin: 16px 0 20px 24px;
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+        .privacy-section ul li {
+            margin-bottom: 8px;
+            list-style-type: disc;
+        }
+        .highlight-box {
+            background: rgba(138, 10, 27, 0.08);
+            border-left: 4px solid var(--primary, #8a0a1b);
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        body.light-theme .highlight-box {
+            background: rgba(138, 10, 27, 0.05);
+        }
+        .highlight-box p {
+            margin: 0;
+            color: var(--text-main);
+            font-weight: 500;
+        }
+        .contact-details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+            margin-top: 24px;
+        }
+        .contact-detail-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        body.light-theme .contact-detail-card {
+            background: rgba(0, 0, 0, 0.03);
+            border-color: rgba(0, 0, 0, 0.08);
+        }
+        .contact-detail-card i {
+            font-size: 1.5rem;
+            color: var(--primary, #8a0a1b);
+        }
+        .contact-detail-card div h4 {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 4px;
+        }
+        .contact-detail-card div a,
+        .contact-detail-card div span {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-decoration: none;
+        }
+        .contact-detail-card div a:hover {
+            color: var(--primary, #8a0a1b);
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <script>
+        if (localStorage.getItem('theme') === 'light') document.body.classList.add('light-theme');
+    </script>
+
+    <!-- Navigation Header -->
+    <header class="floating-header" id="main-header">
+        <nav class="glass-nav" id="nav-links">
+            <a href="index.html" class="brand-logo-link" aria-label="Pixels Studio Home">
+                <img src="Assets/pixels studio footer.png" alt="Pixels Studio" class="logo-dark">
+                <img src="Assets/pixels studio.png" alt="Pixels Studio" class="logo-light">
+            </a>
+            
+            <div class="nav-divider"></div>
+            <div class="nav-slider" id="nav-slider"></div>
+            
+            <a href="index.html" class="nav-item">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="about.html" class="nav-item">
+                <i class="fa-regular fa-user"></i>
+                <span>About</span>
+            </a>
+            <a href="index.html#services" class="nav-item">
+                <i class="fa-solid fa-camera"></i>
+                <span>Services</span>
+            </a>
+            <a href="index.html#contact" class="nav-item">
+                <i class="fa-regular fa-envelope"></i>
+                <span>Contact</span>
+            </a>
+
+            <button id="theme-toggle" aria-label="Toggle Theme">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+        </nav>
+        <div class="mobile-toggle" aria-label="Toggle Navigation Menu"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <main id="main-content">
+        <div class="privacy-container">
+            
+            <!-- Header Section -->
+            <div class="privacy-header-card">
+                <span class="privacy-badge">Legal Disclosure</span>
+                <h1>Privacy Policy</h1>
+                <p class="privacy-effective"><i class="far fa-calendar-alt" style="margin-right: 6px;"></i> Effective Date: September 21, 2026 | Last Updated: September 2026</p>
+                <div class="highlight-box" style="margin-top: 24px;">
+                    <p>Pixels Studio ("we", "us", "our") is committed to safeguarding the privacy, confidentiality, and security of our clients, website visitors, and photography subjects. This Privacy Policy details how we collect, use, store, protect, and process your personal data and photographic media in accordance with applicable data protection laws.</p>
+                </div>
+            </div>
+
+            <!-- 1. Data Controller Information -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-building"></i> 1. Data Controller & Scope</h2>
+                <p>Pixels Studio operates as the official Data Controller responsible for processing your personal data collected through our website, online booking system, studio consultations, and photography sessions.</p>
+                <p>This policy applies to all interactions with Pixels Studio, including website browsing, session inquiries, contract agreements, client consultations, online bookings, and photo shoot deliveries.</p>
+            </div>
+
+            <!-- 2. Personal Information We Collect -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-user-shield"></i> 2. Information We Collect</h2>
+                <p>We collect personal information necessary to deliver professional photography services, process bookings, and maintain client relations. The types of data collected include:</p>
+                <ul>
+                    <li><strong>Direct Identity & Contact Information:</strong> Full name, email address, telephone numbers, home or billing address.</li>
+                    <li><strong>Booking & Event Specifications:</strong> Selected photography service (Kids Photoshoot, Wedding Coverage, Professional Session, Event), event venue address/location, date and time preferences, special requests, and session requirements.</li>
+                    <li><strong>Photographic Media Data:</strong> Images, digital raw files, video recordings, and proof portfolios created during your photography session.</li>
+                    <li><strong>Technical & Device Data:</strong> IP address, browser type, operating system, pages visited, and user interface preferences (such as light/dark mode settings stored via browser local storage).</li>
+                    <li><strong>Communications Data:</strong> Messages, email exchanges, WhatsApp communications, and feedback submitted to our studio.</li>
+                </ul>
+            </div>
+
+            <!-- 3. Purpose & Legal Basis for Processing -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-gavel"></i> 3. Legal Grounds & Purposes of Data Use</h2>
+                <p>We process your personal data strictly under valid legal bases recognized under data protection regulations:</p>
+                <ul>
+                    <li><strong>Performance of Contract:</strong> To fulfill photography session bookings, deliver high-resolution photo portfolios, manage event schedules, and process payments.</li>
+                    <li><strong>Legitimate Business Interests:</strong> To maintain studio archives, improve service quality, respond to inquiries, and prevent fraud.</li>
+                    <li><strong>Legal & Regulatory Compliance:</strong> To maintain legal accounting records, comply with tax obligations, and protect our legal rights.</li>
+                    <li><strong>Explicit Consent:</strong> Where you provide consent to display session samples on our website, social media pages, or marketing material.</li>
+                </ul>
+            </div>
+
+            <!-- 4. Media Rights & Client Photography Privacy -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-camera"></i> 4. Image Rights, Copyright & Portfolio Usage</h2>
+                <p>As standard in the professional photography industry, Pixels Studio retains copyright over original photographic materials created during shoots. However, we deeply respect client privacy:</p>
+                <div class="highlight-box">
+                    <p><i class="fas fa-shield-alt" style="margin-right: 8px;"></i> <strong>Client Privacy Choice:</strong> Promotional or public showcase of your session images (on our website or official social media channels) is strictly governed by your booking agreement and consent. Clients may request private non-disclosure for sensitive sessions.</p>
+                </div>
+                <p>For <strong>Kids Photoshoots</strong>, we adhere to strict child protection protocols. No images of minors are published without explicit written authorization from a parent or legal guardian.</p>
+            </div>
+
+            <!-- 5. Data Disclosure & Third-Party Sharing -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-handshake"></i> 5. Data Sharing & Non-Sale Guarantee</h2>
+                <p><strong>We do NOT sell, rent, trade, or monetize your personal information to third parties under any circumstances.</strong></p>
+                <p>Your data is only shared with trusted operational partners under strict confidentiality agreements when necessary to fulfill your service:</p>
+                <ul>
+                    <li><strong>Secure Communication Tools:</strong> Form processors (e.g., Formspree/FormSubmit) and messaging channels (WhatsApp API) used to deliver your booking form submissions directly to our studio team.</li>
+                    <li><strong>High-Resolution Delivery Platforms:</strong> Private password-protected digital gallery hosting services used to deliver your final edited photos.</li>
+                    <li><strong>Legal Obligations:</strong> Law enforcement or judicial authorities only if required by valid court orders or legal mandates.</li>
+                </ul>
+            </div>
+
+            <!-- 6. Data Storage & Retention Policy -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-database"></i> 6. Data Storage, Archival & Retention</h2>
+                <p>We store your data securely using encrypted physical drives, secure cloud backups, and protected studio databases:</p>
+                <ul>
+                    <li><strong>Client Contact & Contract Records:</strong> Retained for a minimum of 3 years to comply with statutory accounting and legal contract requirements.</li>
+                    <li><strong>Photographic Image Archives:</strong> Edited high-resolution photos are retained in our studio archives for a minimum of 12 months after delivery to assist clients with re-downloads or reprint requests.</li>
+                </ul>
+            </div>
+
+            <!-- 7. Data Security Safeguards -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-lock"></i> 7. Data Security Safeguards</h2>
+                <p>Pixels Studio employs physical, technical, and administrative security measures to safeguard your personal data against unauthorized access, alteration, disclosure, or destruction.</p>
+                <p>Our security measures include SSL/TLS encryption for website transmission, restricted staff access controls, password-protected photo delivery vaults, and secure storage hardware.</p>
+            </div>
+
+            <!-- 8. Your Individual Legal Privacy Rights -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-user-check"></i> 8. Your Legal Data Rights</h2>
+                <p>Under global data protection standards, you possess enforceable rights regarding your personal data:</p>
+                <ul>
+                    <li><strong>Right to Access:</strong> You may request a copy of the personal data we hold about you.</li>
+                    <li><strong>Right to Rectification:</strong> You may request immediate correction of inaccurate or incomplete contact details.</li>
+                    <li><strong>Right to Erasure ("Right to be Forgotten"):</strong> You may request deletion of your personal contact data or photo archives from our systems, subject to statutory legal holding requirements.</li>
+                    <li><strong>Right to Object & Withdraw Consent:</strong> You may withdraw portfolio display consent or object to promotional communications at any time.</li>
+                </ul>
+            </div>
+
+            <!-- 9. Cookies & Browser Local Storage -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-cookie-bite"></i> 9. Cookies & Browser Local Storage</h2>
+                <p>Pixels Studio does not use invasive tracking cookies or third-party advertising trackers.</p>
+                <p>We utilize HTML5 browser <code>localStorage</code> solely to remember your preferred visual site theme (Light Mode or Dark Mode) across page visits. This data remains stored locally on your device and is never transmitted to remote tracking servers.</p>
+            </div>
+
+            <!-- 10. Children's Privacy Protection -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-child"></i> 10. Protection of Minors</h2>
+                <p>Our services involving minors (such as Kids Photoshoots) are provided strictly through adult contracts. We do not knowingly collect personal data directly from children under 18 years of age without verifiable parental or guardian consent.</p>
+            </div>
+
+            <!-- 11. Policy Revisions & Updates -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-sync-alt"></i> 11. Policy Modifications</h2>
+                <p>Pixels Studio reserves the right to update this Privacy Policy to reflect changes in legal requirements or operational practices. Any updates will be published on this page with an updated "Last Modified" date.</p>
+            </div>
+
+            <!-- 12. Contact & Legal Enquiries -->
+            <div class="privacy-section">
+                <h2><i class="fas fa-envelope-open-text"></i> 12. Contact Us & Legal Inquiries</h2>
+                <p>If you have any questions, concerns, or legal requests regarding this Privacy Policy or wish to exercise your data privacy rights, please contact our Data Protection Officer:</p>
+                
+                <div class="contact-details-grid">
+                    <div class="contact-detail-card">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>Email Support</h3>
+                            <a href="mailto:pixelsstudio4@gmail.com">pixelsstudio4@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-card">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h3>Phone Enquiries</h3>
+                            <a href="tel:+233549216815">+233 54 921 6815</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-card">
+                        <i class="fab fa-whatsapp"></i>
+                        <div>
+                            <h3>WhatsApp Direct</h3>
+                            <a href="https://api.whatsapp.com/send?phone=233206661411" target="_blank">+233 20 666 1411</a>
+                        </div>
+                    </div>
+
+                    <div class="contact-detail-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Studio Location</h3>
+                            <span>Ankwa Dobro, Nsawam, Eastern Region, Ghana</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="row">
+            <div class="column">
+                <img src="Assets/pixels studio footer.png" class="logo-footer" alt="pixels logo" loading="lazy">
+                <p>Capturing moments that matter. We turn fleeting seconds into lasting memories with a focus on natural light and genuine emotion. For inquiries regarding rates, availability, or to book a session, please use the contact form.</p>
+            </div>
+            <div class="column">
+                <h3 class="footer-head">Office</h3>
+                <p>Ankwa Dobro, Nsawam</p>
+                <p>Eastern Region, Ghana</p>
+                
+                <div class="phone-numbers">
+                    <a href="tel:+233549216815"><i class="fas fa-phone "></i> +233 54 921 6815</a>
+                    <a href="tel:+233206661411"><i class="fas fa-phone "></i> +233 20 666 1411</a>        
+                </div>
+            </div>
+            <div class="column">
+                <h3 class="footer-head">Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3 class="footer-head">Studio Hours</h3>
+                <p class="footer-head">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                <p class="footer-head">Saturday: 10:00 AM - 4:00 PM</p>
+                <p class="footer-head">Sunday: Closed</p>
+
+                <div class="social-links">
+                    <a href="https://api.whatsapp.com/send?phone=233206661411" target="_blank" aria-label="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/share/1H8iUNTqra" target="_blank" aria-label="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="mailto:pixelsstudio4@gmail.com" target="_blank" aria-label="Mail"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.instagram.com/pixels_studiogh?igsh=cnNvaXIydzd5eWc1" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">&copy; Pixels Studio <span id="current-year">2026</span> - All Rights Reserved</p>
+    </footer>
+
+    <div class="floating-actions">
+        <button class="floating-theme-btn" aria-label="Toggle Theme">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+        <button id="scrollTopBtn" class="scroll-top-btn" aria-label="Scroll to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
