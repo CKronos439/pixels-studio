@@ -35,15 +35,20 @@
     animation-delay: 0.4s;
 }
 
-.gallery-item {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+/* =========================================
+   INDIVIDUAL SERVICE HERO BACKGROUNDS
+   ========================================= */
+
+.kids-hero {
+    background: url('../Assets/kidz card.jpg') no-repeat center 20% / cover;
 }
 
-.gallery-item.active {
-    opacity: 1;
-    transform: translateY(0);
+.photoshoot-hero {
+    background: url('../Assets/photoshoot card.jpg') no-repeat center 10% / cover;
+}
+
+.weddings-hero {
+    background: url('../Assets/wedding card.jpg') no-repeat center 40% / cover;
 }
 
 /* =========================================
@@ -142,10 +147,8 @@
 }
 
 .btn-book-session:hover {
-    background-color: var(--primary-dark);
-    transform: translateY(-3px);
+    filter: brightness(1.15);
     box-shadow: 0 8px 25px rgba(138, 10, 27, 0.5);
-    animation: none;
 }
 
 .btn-book-session:active {
@@ -335,21 +338,15 @@
     flex-wrap: wrap;
     gap: 30px;
     padding: 25px 50px;
-    background: #000000 !important;
-    border-radius: 0 !important;
-    box-shadow: none !important;
+    background: #000000;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     position: relative;
     z-index: 10;
     transition: background-color 0.5s ease, border-color 0.5s ease;
 }
 
-.minimal-footer::before {
-    display: none !important;
-}
-
 .minimal-footer .copyright {
-    color: #aaaaaa !important;
+    color: #aaaaaa;
     font-size: 0.9rem;
     margin: 0;
     transition: color 0.5s ease;
@@ -361,18 +358,14 @@
 }
 
 .minimal-footer .footer-links a {
-    color: #aaaaaa !important;
+    color: #aaaaaa;
     font-size: 0.95rem;
     font-weight: 500;
-    padding: 6px 14px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
+    transition: color 0.5s ease;
 }
 
 .minimal-footer .footer-links a:hover {
-    color: #ffffff !important;
-    background-color: #1a1a1a;
-    transform: translateY(-2px);
+    color: var(--primary);
 }
 
 @media (max-width: 480px) {
@@ -404,60 +397,56 @@ body.light-theme .service-intro::before {
     opacity: 1;
 }
 body.light-theme .service-intro {
-    box-shadow: 0 -10px 30px rgba(0,0,0,0.05) !important;
-    border-top: none !important;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.05);
+    border-top: none;
 }
 
 
 body.light-theme .hero-overlay h1,
 body.light-theme .hero-overlay h2 {
-    color: #111111 !important;
-    text-shadow: none !important;
+    color: #111111;
+    text-shadow: none;
 }
 
 body.light-theme .hero-overlay p {
-    color: #444444 !important;
+    color: #444444;
 }
 
 body.light-theme .intro-welcome,
 body.light-theme .projects-title {
-    color: #111111 !important;
+    color: #111111;
 }
 
 body.light-theme .intro-text {
-    color: #444444 !important;
+    color: #444444;
 }
 
 body.light-theme .see-more-btn {
-    color: #111111 !important;
-    border-color: rgba(0, 0, 0, 0.15) !important;
-    background: rgba(0, 0, 0, 0.02) !important;
+    color: #111111;
+    border-color: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.02);
 }
 
 body.light-theme .see-more-btn:hover {
-    color: #ffffff !important;
-    background-color: #8a0a1b !important;
-    border-color: #8a0a1b !important;
-    box-shadow: 0 10px 30px rgba(138, 10, 27, 0.2) !important;
+    color: #ffffff;
+    background-color: #8a0a1b;
+    border-color: #8a0a1b;
+    box-shadow: 0 10px 30px rgba(138, 10, 27, 0.2);
 }
 
 body.light-theme .minimal-footer {
-    background: #f8f9fa !important;
-    box-shadow: none !important;
-    border-radius: 0 !important;
+    background: #f8f9fa;
     border-top: 1px solid rgba(0, 0, 0, 0.08);
 }
 
 body.light-theme .minimal-footer .copyright {
-    color: #555555 !important;
+    color: #555555;
 }
 
 body.light-theme .minimal-footer .footer-links a {
-    color: #222222 !important;
+    color: #222222;
 }
 
 body.light-theme .minimal-footer .footer-links a:hover {
-    color: #000000 !important;
-    background-color: #e9ecef;
-    transform: translateY(-2px);
+    color: var(--primary);
 }
